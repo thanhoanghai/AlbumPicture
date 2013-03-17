@@ -11,9 +11,6 @@
 @interface DetailAlbumCell : UITableViewCell
 
 @property(nonatomic,strong) IBOutlet UIImageView *iconImageView;
-@property(nonatomic,strong) IBOutlet UILabel *contentLabel;
-@property (weak, nonatomic) IBOutlet UILabel *price;
-
 
 - (void) setlinkImage:(NSString *)url size:(CGSize)size;
 @end

@@ -13,8 +13,6 @@
 @implementation DetailAlbumCell
 
 @synthesize iconImageView = _iconImageView;
-@synthesize contentLabel = _contentLabel;
-@synthesize price = _price;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -22,14 +20,8 @@
     
     if (self) 
     {
-// Initialization code
-//        UIImageView *cellBackground = [[UIImageView alloc] init];
-//        cellBackground.image = [UIImage imageNamed:@"bg_slide_nav.png"];
-//        self.backgroundView = cellBackground;
-//
         UIImageView *cellSelectedBackground = [[UIImageView alloc] init];
-        cellSelectedBackground.backgroundColor = COLOR_MENU_CELL_SELECTED;
-        //cellSelectedBackground.image = [UIImage imageNamed:@"bg_transparent"];
+        cellSelectedBackground.backgroundColor = COLOR_MENU_CELL_SELECTED;       
         self.selectedBackgroundView = cellSelectedBackground;
     }
     return self;
