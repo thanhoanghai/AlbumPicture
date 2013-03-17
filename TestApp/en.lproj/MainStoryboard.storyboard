@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11C74" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="GgW-b3-f6o">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="GgW-b3-f6o">
     <dependencies>
-        <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
         <scene sceneID="5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
                 <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
@@ -66,38 +65,42 @@
                         <segue destination="cYU-3t-Lqw" kind="push" identifier="MySegue" id="kmO-Rg-LtS"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="641" y="118"/>
         </scene>
+        <!--Second View-->
         <scene sceneID="f3z-3h-w2C">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8CI-k1-AKy" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="cYU-3t-Lqw" customClass="SecondView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I69-hA-5yz">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Your button was : " textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="2Yh-kY-XMi">
-                                <rect key="frame" x="45" y="173" width="230" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Zwx-a2-Itr">
+                                <rect key="frame" x="0.0" y="45" width="320" height="371"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="cYU-3t-Lqw" id="lKa-Px-RYu"/>
+                                    <outlet property="delegate" destination="cYU-3t-Lqw" id="tdG-yg-eWR"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Mnz-qO-oBJ"/>
                     <connections>
-                        <outlet property="outputlabel" destination="2Yh-kY-XMi" id="56J-dW-k8i"/>
+                        <outlet property="tabbleViewAlbum" destination="Zwx-a2-Itr" id="VX5-c4-vXJ"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8CI-k1-AKy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1081" y="118"/>
         </scene>
+        <!--Navigation Controller-->
         <scene sceneID="1oh-xQ-1jW">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="64O-RN-nKL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="GgW-b3-f6o" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="06a-nH-JGJ">
@@ -109,6 +112,7 @@
                         <segue destination="2" kind="relationship" relationship="rootViewController" id="485-J8-ylT"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="64O-RN-nKL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="115" y="118"/>
         </scene>
@@ -117,11 +121,16 @@
         <class className="SecondView" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SecondView.h"/>
             <relationships>
+                <relationship kind="outlet" name="UIviewMain" candidateClass="UIView"/>
                 <relationship kind="outlet" name="outputlabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="tabbleViewAlbum" candidateClass="UITableView"/>
             </relationships>
         </class>
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="buttonPressed:"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
