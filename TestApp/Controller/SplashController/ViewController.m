@@ -4,7 +4,7 @@
 
 
 #import "ViewController.h"
-#import "SecondView.h"
+#import "AlbumViewController.h"
 
 @implementation ViewController
 

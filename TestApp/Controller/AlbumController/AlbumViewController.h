@@ -8,7 +8,7 @@
 
 @class STSegmentedControl;
 
-@interface SecondView : UIViewController
+@interface AlbumViewController : UIViewController
 {
     NSInteger selectedButton;
     STSegmentedControl *segment;

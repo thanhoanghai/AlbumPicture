@@ -3,13 +3,13 @@
 //  TestApp
 
 
-#import "SecondView.h"
+#import "AlbumViewController.h"
 #import "STSegmentedControl.h"
 #import "AlbumCell.h"
 
 
 
-@implementation SecondView
+@implementation AlbumViewController
 @synthesize segment;
 @synthesize tabbleViewAlbum;
 @synthesize selectedButton, outputlabel;
