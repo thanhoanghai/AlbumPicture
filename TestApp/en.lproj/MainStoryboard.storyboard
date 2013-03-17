@@ -77,7 +77,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Zwx-a2-Itr">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="Zwx-a2-Itr">
                                 <rect key="frame" x="0.0" y="45" width="320" height="371"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -92,11 +92,27 @@
                     <navigationItem key="navigationItem" id="Mnz-qO-oBJ"/>
                     <connections>
                         <outlet property="tabbleViewAlbum" destination="Zwx-a2-Itr" id="VX5-c4-vXJ"/>
+                        <segue destination="SRQ-SC-HYT" kind="push" identifier="showAlbumDetail" id="kW6-GX-Zj1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8CI-k1-AKy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1081" y="118"/>
+        </scene>
+        <!--Detail Album Controller-->
+        <scene sceneID="OTD-2V-EVw">
+            <objects>
+                <viewController id="SRQ-SC-HYT" customClass="DetailAlbumController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YIT-0E-u7O">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="tcm-JQ-YFy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vzq-jX-IH7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1498" y="124"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1oh-xQ-1jW">
