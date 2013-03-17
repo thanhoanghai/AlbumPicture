@@ -48,8 +48,9 @@
 		EBB7EEDE16F58B9F00FACC3E /* icon_logo_hightlight.png in Resources */ = {isa = PBXBuildFile; fileRef = EBB7EEDA16F58B9F00FACC3E /* icon_logo_hightlight.png */; };
 		EBB7EEE416F58C4A00FACC3E /* AlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB7EEE016F58C4A00FACC3E /* AlbumCell.m */; };
 		EBB7EEE516F58C4A00FACC3E /* AlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBB7EEE116F58C4A00FACC3E /* AlbumCell.xib */; };
-		EBB7EEEC16F591FD00FACC3E /* DetailAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB7EEEB16F591FD00FACC3E /* DetailAlbumViewController.m */; };
 		EBB7EEF916F5951E00FACC3E /* DetailAlbumController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB7EEF816F5951D00FACC3E /* DetailAlbumController.m */; };
+		EBB7EF1316F59F4200FACC3E /* DetailAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB7EF1116F59F4200FACC3E /* DetailAlbumCell.m */; };
+		EBB7EF1416F59F4200FACC3E /* DetailAlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBB7EF1216F59F4200FACC3E /* DetailAlbumCell.xib */; };
 		F43DA6541454565300F31F0B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43DA6531454565300F31F0B /* UIKit.framework */; };
 		F43DA6561454565300F31F0B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43DA6551454565300F31F0B /* Foundation.framework */; };
 		F43DA6581454565300F31F0B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43DA6571454565300F31F0B /* CoreGraphics.framework */; };
@@ -122,10 +123,11 @@
 		EBB7EEDF16F58C4A00FACC3E /* AlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumCell.h; sourceTree = "<group>"; };
 		EBB7EEE016F58C4A00FACC3E /* AlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumCell.m; sourceTree = "<group>"; };
 		EBB7EEE116F58C4A00FACC3E /* AlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumCell.xib; sourceTree = "<group>"; };
-		EBB7EEEA16F591FD00FACC3E /* DetailAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailAlbumViewController.h; sourceTree = "<group>"; };
-		EBB7EEEB16F591FD00FACC3E /* DetailAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailAlbumViewController.m; sourceTree = "<group>"; };
 		EBB7EEF716F5951D00FACC3E /* DetailAlbumController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailAlbumController.h; sourceTree = "<group>"; };
 		EBB7EEF816F5951D00FACC3E /* DetailAlbumController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailAlbumController.m; sourceTree = "<group>"; };
+		EBB7EF1016F59F4200FACC3E /* DetailAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailAlbumCell.h; sourceTree = "<group>"; };
+		EBB7EF1116F59F4200FACC3E /* DetailAlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailAlbumCell.m; sourceTree = "<group>"; };
+		EBB7EF1216F59F4200FACC3E /* DetailAlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailAlbumCell.xib; sourceTree = "<group>"; };
 		F43DA64F1454565300F31F0B /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F43DA6531454565300F31F0B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F43DA6551454565300F31F0B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -178,10 +180,11 @@
 		EBB7EE7016F58A4400FACC3E /* DetailAlbumController */ = {
 			isa = PBXGroup;
 			children = (
+				EBB7EF1016F59F4200FACC3E /* DetailAlbumCell.h */,
+				EBB7EF1116F59F4200FACC3E /* DetailAlbumCell.m */,
+				EBB7EF1216F59F4200FACC3E /* DetailAlbumCell.xib */,
 				EBB7EEF716F5951D00FACC3E /* DetailAlbumController.h */,
 				EBB7EEF816F5951D00FACC3E /* DetailAlbumController.m */,
-				EBB7EEEA16F591FD00FACC3E /* DetailAlbumViewController.h */,
-				EBB7EEEB16F591FD00FACC3E /* DetailAlbumViewController.m */,
 			);
 			path = DetailAlbumController;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				EBB7EEDD16F58B9F00FACC3E /* icon_logo.png in Resources */,
 				EBB7EEDE16F58B9F00FACC3E /* icon_logo_hightlight.png in Resources */,
 				EBB7EEE516F58C4A00FACC3E /* AlbumCell.xib in Resources */,
+				EBB7EF1416F59F4200FACC3E /* DetailAlbumCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,8 +475,8 @@
 				EBB7EED216F58B9300FACC3E /* MNMBottomPullToRefreshView.m in Sources */,
 				EBB7EED316F58B9300FACC3E /* STSegmentedControl.m in Sources */,
 				EBB7EEE416F58C4A00FACC3E /* AlbumCell.m in Sources */,
-				EBB7EEEC16F591FD00FACC3E /* DetailAlbumViewController.m in Sources */,
 				EBB7EEF916F5951E00FACC3E /* DetailAlbumController.m in Sources */,
+				EBB7EF1316F59F4200FACC3E /* DetailAlbumCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
