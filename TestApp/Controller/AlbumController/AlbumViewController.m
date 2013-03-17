@@ -1,21 +1,62 @@
 //
-//  SecondView.m
-//  TestApp
+//  Tab1_GreenScreenViewController.m
+//  Demo
+//
+//  Created on 18/10/2011.
+//  Copyright (c) 2011 MaybeLost.com - All rights reserved.
+//
 
-
-#import "SecondView.h"
+#import "AlbumViewController.h"
 #import "STSegmentedControl.h"
 #import "AlbumCell.h"
+#import "DetailAlbumViewController.h"
+
+@interface AlbumViewController()
+
+/**
+ * Loads the table
+ *
+ * @private
+ */
+- (void)loadTable;
+
+@end
 
 
 
-@implementation SecondView
+@implementation AlbumViewController
 @synthesize segment;
+@synthesize UIviewMain;
 @synthesize tabbleViewAlbum;
-@synthesize selectedButton, outputlabel;
-
 
 #define IMAGE_SIZE (79.0 * [UIScreen mainScreen].scale)
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc that aren't in use.
+}
+
+#pragma mark - View lifecycle
+
+/*
+// Implement loadView to create a view hierarchy programmatically, without using a nib.
+- (void)loadView
+{
+}
+*/
+
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
@@ -25,7 +66,7 @@
     /*
 	 STSegmentedControl
 	 */
-    NSArray *objects =
+    	NSArray *objects =
     [NSArray arrayWithObjects:@"Album", @"Moi nhat", @"Hot nhat", @"Top", nil];
 	segment = [[STSegmentedControl alloc] initWithItems:objects];
 	segment.frame = CGRectMake(0, 0, 320, 40);
@@ -38,9 +79,9 @@
     //pull to loadview
     reloads_ = -1;
     pullToRefreshManager_ = [[MNMBottomPullToRefreshManager alloc] initWithPullToRefreshViewHeight:60.0f tableView:tabbleViewAlbum withClient:self];
+
     
-    
-    
+
 }
 
 - (void)valueChanged:(id)sender {
@@ -49,7 +90,7 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     
-    [super viewWillAppear:animated];
+    [super viewWillAppear:animated];    
     [self loadTable];
 }
 
@@ -73,11 +114,11 @@
 
 #pragma mark Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    if ([segue.identifier isEqualToString:@"showAlbumDetail"]) {
-//        //NSIndexPath *indexPath = [self.tabbleViewAlbum indexPathForSelectedRow];
-//        DetailAlbumViewController *destViewController = segue.destinationViewController;
-//        destViewController.recipeName = @"Hello";
-//    }
+    if ([segue.identifier isEqualToString:@"showAlbumDetail"]) {
+        //NSIndexPath *indexPath = [self.tabbleViewAlbum indexPathForSelectedRow];
+        DetailAlbumViewController *destViewController = segue.destinationViewController;
+        destViewController.recipeName = @"Hello";
+    }
 }
 
 #pragma mark -
@@ -129,8 +170,8 @@
     static NSString *CellIdentifier = @"AlbumCell";
     AlbumCell *cell = (AlbumCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     // Configure the cell...
-    if(cell==nil){
-        cell = [[AlbumCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"AlbumCell"];
+    if(cell==nil){       
+        cell = [[AlbumCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"AlbumCell"];        
     }
     
     
@@ -139,22 +180,22 @@
     
     
 	
-    //	if (result == nil) {
-    //
-    //        result = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    //        result.selectionStyle = UITableViewCellSelectionStyleNone;
-    //        result.textLabel.backgroundColor = [UIColor clearColor];
-    //    }
-    //
-    //    result.textLabel.text = [NSString stringWithFormat:@"Row %i", indexPath.row];
-    //    UIView *backgroundView = [[UIView alloc] initWithFrame:result.frame];
-    //
-    //    if (indexPath.row % 2 == 0) {
-    //        backgroundView.backgroundColor = [UIColor colorWithWhite:0.8f alpha:1.0f];
-    //    } else {
-    //        backgroundView.backgroundColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
-    //    }
-    //    result.backgroundView = backgroundView;
+//	if (result == nil) {
+//        
+//        result = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+//        result.selectionStyle = UITableViewCellSelectionStyleNone;
+//        result.textLabel.backgroundColor = [UIColor clearColor];
+//    }
+//    
+//    result.textLabel.text = [NSString stringWithFormat:@"Row %i", indexPath.row];    
+//    UIView *backgroundView = [[UIView alloc] initWithFrame:result.frame];
+//    
+//    if (indexPath.row % 2 == 0) {        
+//        backgroundView.backgroundColor = [UIColor colorWithWhite:0.8f alpha:1.0f];
+//    } else {        
+//        backgroundView.backgroundColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
+//    }
+//    result.backgroundView = backgroundView;    
     return cell;
 }
 
@@ -184,7 +225,7 @@
     
     //[self performSegueWithIdentifier:@"showAlbumDetail" sender:sender];
     [self performSegueWithIdentifier:@"showAlbumDetail" sender:[self.tabbleViewAlbum cellForRowAtIndexPath:indexPath]];
-    
+
     
 }
 

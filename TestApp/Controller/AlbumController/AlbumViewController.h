@@ -1,17 +1,23 @@
 //
-//  SecondView.h
-//  TestApp
-
+//  Tab1_GreenScreenViewController.h
+//  Demo
+//
+//  Created on 18/10/2011.
+//  Copyright (c) 2011 MaybeLost.com - All rights reserved.
+//
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 #import "MNMBottomPullToRefreshManager.h"
+
 
 @class STSegmentedControl;
 
-@interface SecondView : UIViewController
+
+@interface AlbumViewController : BaseViewController
+<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, MNMBottomPullToRefreshManagerClient> 
 {
-    NSInteger selectedButton;
-    STSegmentedControl *segment;
+      STSegmentedControl *segment;
     
     /**
      * Pull to refresh manager
@@ -22,14 +28,10 @@
      * Reloads (for testing purposes)
      */
     NSUInteger reloads_;
+        
 
 }
-
-@property (nonatomic) NSInteger selectedButton;
-@property (nonatomic, weak) IBOutlet UILabel *outputlabel;
 @property (strong, nonatomic) IBOutlet UITableView *tabbleViewAlbum;
 @property (strong, nonatomic) IBOutlet UIView *UIviewMain;
 @property (nonatomic,retain) STSegmentedControl *segment;
-
-
 @end
