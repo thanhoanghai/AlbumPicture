@@ -73,11 +73,11 @@
 
 #pragma mark Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    if ([segue.identifier isEqualToString:@"showAlbumDetail"]) {
-//        //NSIndexPath *indexPath = [self.tabbleViewAlbum indexPathForSelectedRow];
+    if ([segue.identifier isEqualToString:@"showAlbumDetail"]) {
+        //NSIndexPath *indexPath = [self.tabbleViewAlbum indexPathForSelectedRow];
 //        DetailAlbumViewController *destViewController = segue.destinationViewController;
 //        destViewController.recipeName = @"Hello";
-//    }
+    }
 }
 
 #pragma mark -
