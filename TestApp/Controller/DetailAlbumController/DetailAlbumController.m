@@ -5,7 +5,7 @@
 
 #import "DetailAlbumController.h"
 #import "STSegmentedControl.h"
-#import "AlbumCell.h"
+#import "DetailAlbumCell.h"
 
 
 
@@ -108,38 +108,15 @@
  */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    //NSString *identifier = @"CellIdentifier";
-    //UITableViewCell* result = [tableView dequeueReusableCellWithIdentifier:identifier];
-    
-    static NSString *CellIdentifier = @"AlbumCell";
-    AlbumCell *cell = (AlbumCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    // Configure the cell...
+    static NSString *CellIdentifier = @"DetailCell";
+    DetailAlbumCell *cell = (DetailAlbumCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if(cell==nil){
-        cell = [[AlbumCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"AlbumCell"];
+        cell = [[DetailAlbumCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"DetailCell"];
     }
-    
-    
+        
     [cell setlinkImage:@"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTZmCoTsuOs-03ZElCvRKCMQOvBMVWGMFFJaRGY_uMsjFdjoT9n"
                   size:CGSizeMake(IMAGE_SIZE, IMAGE_SIZE)];
     
-    
-	
-    //	if (result == nil) {
-    //
-    //        result = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    //        result.selectionStyle = UITableViewCellSelectionStyleNone;
-    //        result.textLabel.backgroundColor = [UIColor clearColor];
-    //    }
-    //
-    //    result.textLabel.text = [NSString stringWithFormat:@"Row %i", indexPath.row];
-    //    UIView *backgroundView = [[UIView alloc] initWithFrame:result.frame];
-    //
-    //    if (indexPath.row % 2 == 0) {
-    //        backgroundView.backgroundColor = [UIColor colorWithWhite:0.8f alpha:1.0f];
-    //    } else {
-    //        backgroundView.backgroundColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
-    //    }
-    //    result.backgroundView = backgroundView;
     return cell;
 }
 
