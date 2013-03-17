@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EBB7EE7416F58A4400FACC3E /* SecondView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB7EE6F16F58A4400FACC3E /* SecondView.m */; };
+		EBB7EE7416F58A4400FACC3E /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB7EE6F16F58A4400FACC3E /* AlbumViewController.m */; };
 		EBB7EE7516F58A4400FACC3E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB7EE7316F58A4400FACC3E /* ViewController.m */; };
 		EBB7EEB316F58B9300FACC3E /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB7EE7D16F58B9300FACC3E /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		EBB7EEB416F58B9300FACC3E /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB7EE7F16F58B9300FACC3E /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -49,6 +49,7 @@
 		EBB7EEE416F58C4A00FACC3E /* AlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB7EEE016F58C4A00FACC3E /* AlbumCell.m */; };
 		EBB7EEE516F58C4A00FACC3E /* AlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBB7EEE116F58C4A00FACC3E /* AlbumCell.xib */; };
 		EBB7EEEC16F591FD00FACC3E /* DetailAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB7EEEB16F591FD00FACC3E /* DetailAlbumViewController.m */; };
+		EBB7EEF916F5951E00FACC3E /* DetailAlbumController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB7EEF816F5951D00FACC3E /* DetailAlbumController.m */; };
 		F43DA6541454565300F31F0B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43DA6531454565300F31F0B /* UIKit.framework */; };
 		F43DA6561454565300F31F0B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43DA6551454565300F31F0B /* Foundation.framework */; };
 		F43DA6581454565300F31F0B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43DA6571454565300F31F0B /* CoreGraphics.framework */; };
@@ -59,8 +60,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EBB7EE6E16F58A4400FACC3E /* SecondView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondView.h; sourceTree = "<group>"; };
-		EBB7EE6F16F58A4400FACC3E /* SecondView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondView.m; sourceTree = "<group>"; };
+		EBB7EE6E16F58A4400FACC3E /* AlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumViewController.h; sourceTree = "<group>"; };
+		EBB7EE6F16F58A4400FACC3E /* AlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumViewController.m; sourceTree = "<group>"; };
 		EBB7EE7216F58A4400FACC3E /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		EBB7EE7316F58A4400FACC3E /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		EBB7EE7C16F58B9300FACC3E /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
@@ -123,6 +124,8 @@
 		EBB7EEE116F58C4A00FACC3E /* AlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumCell.xib; sourceTree = "<group>"; };
 		EBB7EEEA16F591FD00FACC3E /* DetailAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailAlbumViewController.h; sourceTree = "<group>"; };
 		EBB7EEEB16F591FD00FACC3E /* DetailAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailAlbumViewController.m; sourceTree = "<group>"; };
+		EBB7EEF716F5951D00FACC3E /* DetailAlbumController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailAlbumController.h; sourceTree = "<group>"; };
+		EBB7EEF816F5951D00FACC3E /* DetailAlbumController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailAlbumController.m; sourceTree = "<group>"; };
 		F43DA64F1454565300F31F0B /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F43DA6531454565300F31F0B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F43DA6551454565300F31F0B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -163,8 +166,8 @@
 		EBB7EE6D16F58A4400FACC3E /* AlbumController */ = {
 			isa = PBXGroup;
 			children = (
-				EBB7EE6E16F58A4400FACC3E /* SecondView.h */,
-				EBB7EE6F16F58A4400FACC3E /* SecondView.m */,
+				EBB7EE6E16F58A4400FACC3E /* AlbumViewController.h */,
+				EBB7EE6F16F58A4400FACC3E /* AlbumViewController.m */,
 				EBB7EEDF16F58C4A00FACC3E /* AlbumCell.h */,
 				EBB7EEE016F58C4A00FACC3E /* AlbumCell.m */,
 				EBB7EEE116F58C4A00FACC3E /* AlbumCell.xib */,
@@ -175,6 +178,8 @@
 		EBB7EE7016F58A4400FACC3E /* DetailAlbumController */ = {
 			isa = PBXGroup;
 			children = (
+				EBB7EEF716F5951D00FACC3E /* DetailAlbumController.h */,
+				EBB7EEF816F5951D00FACC3E /* DetailAlbumController.m */,
 				EBB7EEEA16F591FD00FACC3E /* DetailAlbumViewController.h */,
 				EBB7EEEB16F591FD00FACC3E /* DetailAlbumViewController.m */,
 			);
@@ -446,7 +451,7 @@
 			files = (
 				F43DA6601454565300F31F0B /* main.m in Sources */,
 				F43DA6641454565300F31F0B /* AppDelegate.m in Sources */,
-				EBB7EE7416F58A4400FACC3E /* SecondView.m in Sources */,
+				EBB7EE7416F58A4400FACC3E /* AlbumViewController.m in Sources */,
 				EBB7EE7516F58A4400FACC3E /* ViewController.m in Sources */,
 				EBB7EEB316F58B9300FACC3E /* AFHTTPClient.m in Sources */,
 				EBB7EEB416F58B9300FACC3E /* AFHTTPRequestOperation.m in Sources */,
@@ -467,6 +472,7 @@
 				EBB7EED316F58B9300FACC3E /* STSegmentedControl.m in Sources */,
 				EBB7EEE416F58C4A00FACC3E /* AlbumCell.m in Sources */,
 				EBB7EEEC16F591FD00FACC3E /* DetailAlbumViewController.m in Sources */,
+				EBB7EEF916F5951E00FACC3E /* DetailAlbumController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
