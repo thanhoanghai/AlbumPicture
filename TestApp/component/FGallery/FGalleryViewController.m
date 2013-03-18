@@ -7,15 +7,13 @@
 //
 
 #import "FGalleryViewController.h"
+#import <SystemConfiguration/SCNetworkReachability.h>
 
-#import "LRBaseController.h"
 
 
-#import "LRAppDelegate.h"
-#import "LRItemMemorials.h"
-#import "Event.h"
-#import "MFSideMenu.h"
-#import "MFSideMenuManager.h"
+
+
+
 
 #define kThumbnailSize 75
 #define kThumbnailSpacing 4
@@ -185,10 +183,14 @@
     customView.frame = CGRectMake(0, 0, 50, 30);
     [customView setImage:[UIImage imageNamed:@"back_button"] forState:UIControlStateNormal];
     [customView setImage:[UIImage imageNamed:@"back_button_pressed"] forState:UIControlStateHighlighted];
-    [customView addTarget:self action:@selector(backButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
+    [customView addTarget:self action:@selector(backButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = 
     [[[UIBarButtonItem alloc] initWithCustomView:customView] autorelease] ;
+}
+
+-(void)backButtonPressed
+{
+    [self.navigationController popViewControllerAnimated: YES];
 }
 
 - (void)loadView
@@ -374,12 +376,12 @@
 	if( _currentIndex == -1 ) [self next];
 	else [self gotoImageByIndex:_currentIndex animated:NO];
     
-    [MFSideMenuManager setEnableSlide:false];
+
     
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-    [MFSideMenuManager setEnableSlide:true];
+   
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -1136,7 +1138,7 @@
         if(!_isShowDialog){
             _isShowDialog = YES;
         [[[[UIAlertView alloc] initWithTitle:@"Result"
-                                     message:kCannotConnectInternet
+                                     message:@"Can't connect server"
                                     delegate:self
                            cancelButtonTitle:@"OK!"
                            otherButtonTitles:nil] autorelease]
@@ -1150,7 +1152,7 @@
         if(!_isShowDialog){
             _isShowDialog = YES;
             [[[[UIAlertView alloc] initWithTitle:@"Result"
-                                     message:kRequestTimeoutMessage
+                                     message:@"Time out"
                                     delegate:self
                            cancelButtonTitle:@"OK!"
                            otherButtonTitles:nil] autorelease] show];
