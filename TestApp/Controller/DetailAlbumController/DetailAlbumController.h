@@ -5,13 +5,13 @@
 
 #import <UIKit/UIKit.h>
 #import "MNMBottomPullToRefreshManager.h"
+#import "FGalleryViewController.h"
 
 @class STSegmentedControl;
 
-@interface DetailAlbumController : UIViewController
+@interface DetailAlbumController : UIViewController <FGalleryViewControllerDelegate>
 {
     NSInteger selectedButton;
-    
     /**
      * Pull to refresh manager
      */
@@ -21,6 +21,9 @@
      * Reloads (for testing purposes)
      */
     NSUInteger reloads_;
+    //gallery
+    FGalleryViewController      *gallery;
+    NSMutableArray              *originalImages;
 
 }
 

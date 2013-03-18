@@ -26,6 +26,14 @@
     reloads_ = -1;
     pullToRefreshManager_ = [[MNMBottomPullToRefreshManager alloc] initWithPullToRefreshViewHeight:60.0f tableView:tabbleViewAlbum withClient:self];
     
+    
+    //gallery define
+    gallery = [[FGalleryViewController alloc] initWithPhotoSource:self];
+
+    originalImages = [[NSMutableArray alloc]init];
+    [originalImages addObject:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSHSZKWpTX6509BBTDPOfFjxY6BPYxK-hxINX6baRjEoAu35HdaCA"];
+    [originalImages addObject:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSHSZKWpTX6509BBTDPOfFjxY6BPYxK-hxINX6baRjEoAu35HdaCA"];
+    [originalImages addObject:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSHSZKWpTX6509BBTDPOfFjxY6BPYxK-hxINX6baRjEoAu35HdaCA"];
 }
 
 - (void)valueChanged:(id)sender {
@@ -54,6 +62,29 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+#pragma mark Gallery
+-(void)gotoGallery
+{
+    [self.navigationController pushViewController:gallery animated:YES];
+    if(gallery.isThumbViewShowing){
+        [gallery hideThumbnailViewWithAnimation:NO];
+    }
+    [gallery resetImageViewZoomLevels];
+}
+//gallery define
+#pragma mark - FGalleryViewControllerDelegate implementation
+- (int)numberOfPhotosForPhotoGallery:(FGalleryViewController*)gallery{
+    return [originalImages count];
+}
+- (FGalleryPhotoSourceType)photoGallery:(FGalleryViewController*)gallery sourceTypeForPhotoAtIndex:(NSUInteger)index{
+    return FGalleryPhotoSourceTypeNetwork;
+}
+
+-(NSString *)photoGallery:(FGalleryViewController *)gallery urlForPhotoSize:(FGalleryPhotoSize)size atIndex:(NSUInteger)index{
+    return [originalImages objectAtIndex:index];
+}
+
 
 
 #pragma mark Segue
@@ -144,10 +175,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    //[self performSegueWithIdentifier:@"showAlbumDetail" sender:sender];
-    //[self performSegueWithIdentifier:@"showAlbumDetail" sender:[self.tabbleViewAlbum cellForRowAtIndexPath:indexPath]];
     
-    
+    [self gotoGallery];
+        
 }
 
 #pragma mark -
