@@ -41,7 +41,7 @@
     pullToRefreshManager_ = [[MNMBottomPullToRefreshManager alloc] initWithPullToRefreshViewHeight:60.0f tableView:tabbleViewAlbum withClient:self];
     
     //default View picker
-    viewContentPicker.hidden = NO;
+    viewContentPicker.hidden = YES;
     indexPicker = 0;
     arrayListPicker = [[NSMutableArray alloc] initWithObjects:
                    @"Sexy girl",
@@ -98,6 +98,7 @@
 {
     indexPicker = row;
     //[pickerView reloadComponent:0];
+    NSLog(@"indexpicker = %d", indexPicker);
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component;
