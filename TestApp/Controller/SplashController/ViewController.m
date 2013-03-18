@@ -8,6 +8,17 @@
 
 @implementation ViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        sleep(3);
+        [self performSegueWithIdentifier:@"MySegue" sender:self];
+    });
+   
+   
+}
+
 
 - (IBAction)buttonPressed:(id)sender
 {
