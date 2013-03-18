@@ -11,16 +11,11 @@
 
 @interface DetailAlbumController : UIViewController <FGalleryViewControllerDelegate>
 {
-    NSInteger selectedButton;
-    /**
-     * Pull to refresh manager
-     */
-    MNMBottomPullToRefreshManager *pullToRefreshManager_;
     
-    /**
-     * Reloads (for testing purposes)
-     */
+    //pull to refress manager
+    MNMBottomPullToRefreshManager *pullToRefreshManager_;
     NSUInteger reloads_;
+    
     //gallery
     FGalleryViewController      *gallery;
     NSMutableArray              *originalImages;

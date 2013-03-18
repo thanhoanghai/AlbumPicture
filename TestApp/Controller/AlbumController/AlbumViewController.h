@@ -8,7 +8,7 @@
 
 @class STSegmentedControl;
 
-@interface AlbumViewController : UIViewController
+@interface AlbumViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource >
 {
     NSInteger selectedButton;
     STSegmentedControl *segment;
@@ -22,14 +22,17 @@
      * Reloads (for testing purposes)
      */
     NSUInteger reloads_;
+    
+    ///picker
+    NSMutableArray *arrayListPicker;
+    NSInteger indexPicker;
 
 }
-
-@property (nonatomic) NSInteger selectedButton;
-@property (nonatomic, weak) IBOutlet UILabel *outputlabel;
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
+@property (weak, nonatomic) IBOutlet UIView *viewContentPicker;
 @property (strong, nonatomic) IBOutlet UITableView *tabbleViewAlbum;
-@property (strong, nonatomic) IBOutlet UIView *UIviewMain;
 @property (nonatomic,retain) STSegmentedControl *segment;
 
+- (IBAction)touchUpInsideButtonDonePicker:(id)sender;
 
 @end

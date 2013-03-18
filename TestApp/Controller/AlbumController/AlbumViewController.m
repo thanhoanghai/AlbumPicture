@@ -12,7 +12,8 @@
 @implementation AlbumViewController
 @synthesize segment;
 @synthesize tabbleViewAlbum;
-@synthesize selectedButton, outputlabel;
+@synthesize pickerView;
+@synthesize viewContentPicker;
 
 
 #define IMAGE_SIZE (79.0 * [UIScreen mainScreen].scale)
@@ -39,10 +40,25 @@
     reloads_ = -1;
     pullToRefreshManager_ = [[MNMBottomPullToRefreshManager alloc] initWithPullToRefreshViewHeight:60.0f tableView:tabbleViewAlbum withClient:self];
     
-    
+    //default View picker
+    viewContentPicker.hidden = NO;
+    indexPicker = 0;
+    arrayListPicker = [[NSMutableArray alloc] initWithObjects:
+                   @"Sexy girl",
+                   @"Wind",
+                   @"Noen",
+                   @"Spring",
+                   @"Champion",
+                   @"Football",
+                   @"Picnic",
+                   nil];
+
     
 }
 
+/*
+ STSegmentedControl
+ */
 - (void)valueChanged:(id)sender {
 	STSegmentedControl *control = sender;
 	NSLog(@"ST Index: %i", control.selectedSegmentIndex);
@@ -57,8 +73,9 @@
 
 - (void)viewDidUnload
 {
-    [self setUIviewMain:nil];
     [self setTabbleViewAlbum:nil];
+    [self setViewContentPicker:nil];
+    [self setPickerView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -69,6 +86,32 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+#pragma mark PickerView
+#pragma mark - Picker
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView;
+{
+	return 1;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    indexPicker = row;
+    //[pickerView reloadComponent:0];
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component;
+{
+	return [arrayListPicker count];
+}
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return [arrayListPicker objectAtIndex:row];
+}
+
+- (IBAction)touchUpInsideButtonDonePicker:(id)sender {
+    viewContentPicker.hidden = YES;
+}
+
 
 
 #pragma mark Segue
@@ -123,16 +166,12 @@
  */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    //NSString *identifier = @"CellIdentifier";
-    //UITableViewCell* result = [tableView dequeueReusableCellWithIdentifier:identifier];
-    
     static NSString *CellIdentifier = @"AlbumCell";
     AlbumCell *cell = (AlbumCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     // Configure the cell...
     if(cell==nil){
         cell = [[AlbumCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"AlbumCell"];
     }
-    
     
     [cell setlinkImage:@"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTZmCoTsuOs-03ZElCvRKCMQOvBMVWGMFFJaRGY_uMsjFdjoT9n"
                   size:CGSizeMake(IMAGE_SIZE, IMAGE_SIZE)];
