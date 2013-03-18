@@ -5,6 +5,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MNMBottomPullToRefreshManager.h"
+#import "MBProgressHUD.h"
 
 @class STSegmentedControl;
 
@@ -26,6 +27,10 @@
     ///picker
     NSMutableArray *arrayListPicker;
     NSInteger indexPicker;
+    
+    //hub loading
+    MBProgressHUD *HUD;
+
 
 }
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
@@ -35,5 +40,9 @@
 
 - (IBAction)touchUpInsideButtonDonePicker:(id)sender;
 - (IBAction)showTypeAlbum:(id)sender;
+//hub loading
+- (void)showHUDWithString;
+- (void)hideHUD;
+
 
 @end

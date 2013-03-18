@@ -32,7 +32,7 @@
 
     originalImages = [[NSMutableArray alloc]init];
     [originalImages addObject:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSHSZKWpTX6509BBTDPOfFjxY6BPYxK-hxINX6baRjEoAu35HdaCA"];
-    [originalImages addObject:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSHSZKWpTX6509BBTDPOfFjxY6BPYxK-hxINX6baRjEoAu35HdaCA"];
+    [originalImages addObject:@"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSWXWCd6nWedy3ImzLrJ9sTaL_9w5Pn7MHnwRfik80SZSGZ222N"];
     [originalImages addObject:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSHSZKWpTX6509BBTDPOfFjxY6BPYxK-hxINX6baRjEoAu35HdaCA"];
 }
 
@@ -145,7 +145,7 @@
         cell = [[DetailAlbumCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"DetailCell"];
     }
         
-    [cell setlinkImage:@"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTZmCoTsuOs-03ZElCvRKCMQOvBMVWGMFFJaRGY_uMsjFdjoT9n"
+    [cell setlinkImage:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTCBWVPkf2R9Hh10B1fUCFkFJmAniaKEg0ExMONMg1-qdMhWuBm"
                   size:CGSizeMake(IMAGE_SIZE, IMAGE_SIZE)];
     
     return cell;

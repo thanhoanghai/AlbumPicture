@@ -6,6 +6,7 @@
 #import "AlbumViewController.h"
 #import "STSegmentedControl.h"
 #import "AlbumCell.h"
+#import "MBProgressHUD.h"
 
 
 
@@ -52,8 +53,6 @@
                    @"Football",
                    @"Picnic",
                    nil];
-
-    
 }
 
 /*
@@ -269,6 +268,25 @@
 - (void)bottomPullToRefreshTriggered:(MNMBottomPullToRefreshManager *)manager {
     
     [self performSelector:@selector(loadTable) withObject:nil afterDelay:1.0f];
+}
+
+#pragma mark HUD_LOADING
+- (void)showHUDWithString{
+    
+    if(HUD == nil)
+    {
+        HUD = [[MBProgressHUD alloc] initWithView:self.view];
+        [[self view] addSubview:HUD];
+        
+        HUD.dimBackground = YES;
+        HUD.labelText = @"LOADING ... ";
+    }
+    [HUD show:YES];
+}
+- (void)hideHUD{
+    if(HUD != nil){
+        [HUD hide:YES];
+    }
 }
 
 
