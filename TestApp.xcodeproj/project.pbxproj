@@ -51,6 +51,15 @@
 		EBB7EEF916F5951E00FACC3E /* DetailAlbumController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB7EEF816F5951D00FACC3E /* DetailAlbumController.m */; };
 		EBB7EF1316F59F4200FACC3E /* DetailAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB7EF1116F59F4200FACC3E /* DetailAlbumCell.m */; };
 		EBB7EF1416F59F4200FACC3E /* DetailAlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBB7EF1216F59F4200FACC3E /* DetailAlbumCell.xib */; };
+		F32F858F16F70A7700F14CF0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F32F858E16F70A7700F14CF0 /* QuartzCore.framework */; };
+		F356AE8716F70663003DF0D8 /* back_button_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F356AE8316F70663003DF0D8 /* back_button_pressed.png */; };
+		F356AE8816F70663003DF0D8 /* back_button_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F356AE8416F70663003DF0D8 /* back_button_pressed@2x.png */; };
+		F356AE8916F70663003DF0D8 /* back_button.png in Resources */ = {isa = PBXBuildFile; fileRef = F356AE8516F70663003DF0D8 /* back_button.png */; };
+		F356AE8A16F70663003DF0D8 /* back_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F356AE8616F70663003DF0D8 /* back_button@2x.png */; };
+		F356AE9316F70687003DF0D8 /* FGalleryPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = F356AE8E16F70687003DF0D8 /* FGalleryPhoto.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F356AE9416F70687003DF0D8 /* FGalleryPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = F356AE9016F70687003DF0D8 /* FGalleryPhotoView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F356AE9516F70687003DF0D8 /* FGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F356AE9216F70687003DF0D8 /* FGalleryViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F356AE9716F70829003DF0D8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F356AE9616F70829003DF0D8 /* SystemConfiguration.framework */; };
 		F43DA6541454565300F31F0B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43DA6531454565300F31F0B /* UIKit.framework */; };
 		F43DA6561454565300F31F0B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43DA6551454565300F31F0B /* Foundation.framework */; };
 		F43DA6581454565300F31F0B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43DA6571454565300F31F0B /* CoreGraphics.framework */; };
@@ -128,6 +137,18 @@
 		EBB7EF1016F59F4200FACC3E /* DetailAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailAlbumCell.h; sourceTree = "<group>"; };
 		EBB7EF1116F59F4200FACC3E /* DetailAlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailAlbumCell.m; sourceTree = "<group>"; };
 		EBB7EF1216F59F4200FACC3E /* DetailAlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailAlbumCell.xib; sourceTree = "<group>"; };
+		F32F858E16F70A7700F14CF0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F356AE8316F70663003DF0D8 /* back_button_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_button_pressed.png; sourceTree = "<group>"; };
+		F356AE8416F70663003DF0D8 /* back_button_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_button_pressed@2x.png"; sourceTree = "<group>"; };
+		F356AE8516F70663003DF0D8 /* back_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_button.png; sourceTree = "<group>"; };
+		F356AE8616F70663003DF0D8 /* back_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_button@2x.png"; sourceTree = "<group>"; };
+		F356AE8D16F70687003DF0D8 /* FGalleryPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGalleryPhoto.h; sourceTree = "<group>"; };
+		F356AE8E16F70687003DF0D8 /* FGalleryPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGalleryPhoto.m; sourceTree = "<group>"; };
+		F356AE8F16F70687003DF0D8 /* FGalleryPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGalleryPhotoView.h; sourceTree = "<group>"; };
+		F356AE9016F70687003DF0D8 /* FGalleryPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGalleryPhotoView.m; sourceTree = "<group>"; };
+		F356AE9116F70687003DF0D8 /* FGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGalleryViewController.h; sourceTree = "<group>"; };
+		F356AE9216F70687003DF0D8 /* FGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGalleryViewController.m; sourceTree = "<group>"; };
+		F356AE9616F70829003DF0D8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F43DA64F1454565300F31F0B /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F43DA6531454565300F31F0B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F43DA6551454565300F31F0B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -146,6 +167,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F32F858F16F70A7700F14CF0 /* QuartzCore.framework in Frameworks */,
+				F356AE9716F70829003DF0D8 /* SystemConfiguration.framework in Frameworks */,
 				F43DA6541454565300F31F0B /* UIKit.framework in Frameworks */,
 				F43DA6561454565300F31F0B /* Foundation.framework in Frameworks */,
 				F43DA6581454565300F31F0B /* CoreGraphics.framework in Frameworks */,
@@ -201,6 +224,7 @@
 		EBB7EE7A16F58B9300FACC3E /* component */ = {
 			isa = PBXGroup;
 			children = (
+				F356AE8C16F70687003DF0D8 /* FGallery */,
 				EBB7EE7B16F58B9300FACC3E /* AFNetworking */,
 				EBB7EE9316F58B9300FACC3E /* Categories */,
 				EBB7EE9A16F58B9300FACC3E /* Images */,
@@ -307,12 +331,29 @@
 		EBB7EED616F58B9F00FACC3E /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				F356AE8316F70663003DF0D8 /* back_button_pressed.png */,
+				F356AE8416F70663003DF0D8 /* back_button_pressed@2x.png */,
+				F356AE8516F70663003DF0D8 /* back_button.png */,
+				F356AE8616F70663003DF0D8 /* back_button@2x.png */,
 				EBB7EED716F58B9F00FACC3E /* bnt_account.png */,
 				EBB7EED816F58B9F00FACC3E /* bnt_account_hightlight.png */,
 				EBB7EED916F58B9F00FACC3E /* icon_logo.png */,
 				EBB7EEDA16F58B9F00FACC3E /* icon_logo_hightlight.png */,
 			);
 			path = Image;
+			sourceTree = "<group>";
+		};
+		F356AE8C16F70687003DF0D8 /* FGallery */ = {
+			isa = PBXGroup;
+			children = (
+				F356AE8D16F70687003DF0D8 /* FGalleryPhoto.h */,
+				F356AE8E16F70687003DF0D8 /* FGalleryPhoto.m */,
+				F356AE8F16F70687003DF0D8 /* FGalleryPhotoView.h */,
+				F356AE9016F70687003DF0D8 /* FGalleryPhotoView.m */,
+				F356AE9116F70687003DF0D8 /* FGalleryViewController.h */,
+				F356AE9216F70687003DF0D8 /* FGalleryViewController.m */,
+			);
+			path = FGallery;
 			sourceTree = "<group>";
 		};
 		F43DA6441454565300F31F0B = {
@@ -336,6 +377,8 @@
 		F43DA6521454565300F31F0B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F32F858E16F70A7700F14CF0 /* QuartzCore.framework */,
+				F356AE9616F70829003DF0D8 /* SystemConfiguration.framework */,
 				F43DA6531454565300F31F0B /* UIKit.framework */,
 				F43DA6551454565300F31F0B /* Foundation.framework */,
 				F43DA6571454565300F31F0B /* CoreGraphics.framework */,
@@ -443,6 +486,10 @@
 				EBB7EEDE16F58B9F00FACC3E /* icon_logo_hightlight.png in Resources */,
 				EBB7EEE516F58C4A00FACC3E /* AlbumCell.xib in Resources */,
 				EBB7EF1416F59F4200FACC3E /* DetailAlbumCell.xib in Resources */,
+				F356AE8716F70663003DF0D8 /* back_button_pressed.png in Resources */,
+				F356AE8816F70663003DF0D8 /* back_button_pressed@2x.png in Resources */,
+				F356AE8916F70663003DF0D8 /* back_button.png in Resources */,
+				F356AE8A16F70663003DF0D8 /* back_button@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +524,9 @@
 				EBB7EEE416F58C4A00FACC3E /* AlbumCell.m in Sources */,
 				EBB7EEF916F5951E00FACC3E /* DetailAlbumController.m in Sources */,
 				EBB7EF1316F59F4200FACC3E /* DetailAlbumCell.m in Sources */,
+				F356AE9316F70687003DF0D8 /* FGalleryPhoto.m in Sources */,
+				F356AE9416F70687003DF0D8 /* FGalleryPhotoView.m in Sources */,
+				F356AE9516F70687003DF0D8 /* FGalleryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
