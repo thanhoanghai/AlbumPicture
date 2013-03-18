@@ -7,6 +7,8 @@
 #import "STSegmentedControl.h"
 #import "AlbumCell.h"
 #import "MBProgressHUD.h"
+#import "LRRequestHelper.h"
+#import "LRURLs.h"
 
 
 
@@ -53,6 +55,19 @@
                    @"Football",
                    @"Picnic",
                    nil];
+    
+    
+    //REQUEST HELPER
+    [self showHUDWithString];
+    [LRRequestHelper loadLink:LINK_LIST_TYPE_PHIM success:^(id result){
+        {
+            NSLog(@"%@",result);
+            [self hideHUD];
+        }
+    } failure:^(NSString *err){
+        NSLog(@"Errororororororo %@",err);
+    }];
+    
 }
 
 /*
