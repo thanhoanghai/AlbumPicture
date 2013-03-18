@@ -112,6 +112,10 @@
     viewContentPicker.hidden = YES;
 }
 
+- (IBAction)showTypeAlbum:(id)sender {
+    viewContentPicker.hidden = NO;
+}
+
 
 
 #pragma mark Segue

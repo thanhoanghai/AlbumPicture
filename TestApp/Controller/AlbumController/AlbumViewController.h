@@ -34,5 +34,6 @@
 @property (nonatomic,retain) STSegmentedControl *segment;
 
 - (IBAction)touchUpInsideButtonDonePicker:(id)sender;
+- (IBAction)showTypeAlbum:(id)sender;
 
 @end
