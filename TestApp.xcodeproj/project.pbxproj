@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB2FE4BD16F7754F00531B7F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2FE4BC16F7754F00531B7F /* MBProgressHUD.m */; };
+		EB2FE4CA16F77B0A00531B7F /* LRApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2FE4C916F77B0A00531B7F /* LRApiClient.m */; };
+		EB2FE4CE16F77B7900531B7F /* LRRequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2FE4CD16F77B7900531B7F /* LRRequestHelper.m */; };
 		EBB7EE7416F58A4400FACC3E /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB7EE6F16F58A4400FACC3E /* AlbumViewController.m */; };
 		EBB7EE7516F58A4400FACC3E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB7EE7316F58A4400FACC3E /* ViewController.m */; };
 		EBB7EEB316F58B9300FACC3E /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB7EE7D16F58B9300FACC3E /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -70,6 +73,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB2FE4BB16F7754F00531B7F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		EB2FE4BC16F7754F00531B7F /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		EB2FE4C816F77B0A00531B7F /* LRApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRApiClient.h; sourceTree = "<group>"; };
+		EB2FE4C916F77B0A00531B7F /* LRApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRApiClient.m; sourceTree = "<group>"; };
+		EB2FE4CC16F77B7900531B7F /* LRRequestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRequestHelper.h; sourceTree = "<group>"; };
+		EB2FE4CD16F77B7900531B7F /* LRRequestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRRequestHelper.m; sourceTree = "<group>"; };
+		EB2FE4CF16F77BE000531B7F /* LRURLs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LRURLs.h; sourceTree = "<group>"; };
 		EBB7EE6E16F58A4400FACC3E /* AlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumViewController.h; sourceTree = "<group>"; };
 		EBB7EE6F16F58A4400FACC3E /* AlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumViewController.m; sourceTree = "<group>"; };
 		EBB7EE7216F58A4400FACC3E /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -178,6 +188,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB2FE4BA16F7754F00531B7F /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				EB2FE4BB16F7754F00531B7F /* MBProgressHUD.h */,
+				EB2FE4BC16F7754F00531B7F /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		EB2FE4C716F77B0A00531B7F /* AFClient */ = {
+			isa = PBXGroup;
+			children = (
+				EB2FE4C816F77B0A00531B7F /* LRApiClient.h */,
+				EB2FE4C916F77B0A00531B7F /* LRApiClient.m */,
+			);
+			path = AFClient;
+			sourceTree = "<group>";
+		};
+		EB2FE4CB16F77B7900531B7F /* RequestHelper */ = {
+			isa = PBXGroup;
+			children = (
+				EB2FE4CF16F77BE000531B7F /* LRURLs.h */,
+				EB2FE4CC16F77B7900531B7F /* LRRequestHelper.h */,
+				EB2FE4CD16F77B7900531B7F /* LRRequestHelper.m */,
+			);
+			path = RequestHelper;
+			sourceTree = "<group>";
+		};
 		EBB7EE6C16F58A4400FACC3E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +262,9 @@
 		EBB7EE7A16F58B9300FACC3E /* component */ = {
 			isa = PBXGroup;
 			children = (
+				EB2FE4CB16F77B7900531B7F /* RequestHelper */,
+				EB2FE4C716F77B0A00531B7F /* AFClient */,
+				EB2FE4BA16F7754F00531B7F /* MBProgressHUD */,
 				F356AE8C16F70687003DF0D8 /* FGallery */,
 				EBB7EE7B16F58B9300FACC3E /* AFNetworking */,
 				EBB7EE9316F58B9300FACC3E /* Categories */,
@@ -527,6 +568,9 @@
 				F356AE9316F70687003DF0D8 /* FGalleryPhoto.m in Sources */,
 				F356AE9416F70687003DF0D8 /* FGalleryPhotoView.m in Sources */,
 				F356AE9516F70687003DF0D8 /* FGalleryViewController.m in Sources */,
+				EB2FE4BD16F7754F00531B7F /* MBProgressHUD.m in Sources */,
+				EB2FE4CA16F77B0A00531B7F /* LRApiClient.m in Sources */,
+				EB2FE4CE16F77B7900531B7F /* LRRequestHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
