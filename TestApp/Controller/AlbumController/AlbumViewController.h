@@ -6,10 +6,11 @@
 #import <UIKit/UIKit.h>
 #import "MNMBottomPullToRefreshManager.h"
 #import "MBProgressHUD.h"
+#import "BaseViewController.h"
 
 @class STSegmentedControl;
 
-@interface AlbumViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource ,UIGestureRecognizerDelegate,MNMBottomPullToRefreshManagerClient>
+@interface AlbumViewController : BaseViewController <UIPickerViewDelegate, UIPickerViewDataSource ,UIGestureRecognizerDelegate,MNMBottomPullToRefreshManagerClient>
 {
     NSInteger selectedButton;
     STSegmentedControl *segment;

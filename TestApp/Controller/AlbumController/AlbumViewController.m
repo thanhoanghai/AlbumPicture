@@ -68,6 +68,12 @@
 //        NSLog(@"Errororororororo %@",err);
 //    }];
     
+    
+    //ADD CUSTOM TOP RIGHT BUTTON
+    [self addbntRigtCustom:3];
+    bntRight3.enabled = false;
+    [self addBntLeftIconApp];
+    
 }
 
 /*
@@ -76,6 +82,10 @@
 - (void)valueChanged:(id)sender {
 	STSegmentedControl *control = sender;
 	NSLog(@"ST Index: %i", control.selectedSegmentIndex);
+    if(control.selectedSegmentIndex == 0)
+        bntRight3.enabled = true;
+    else
+        bntRight3.enabled = false;
 }
 - (void)viewWillAppear:(BOOL)animated {
     
