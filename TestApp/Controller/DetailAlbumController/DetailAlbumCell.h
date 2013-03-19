@@ -11,6 +11,8 @@
 @interface DetailAlbumCell : UITableViewCell
 
 @property(nonatomic,strong) IBOutlet UIImageView *iconImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *iconImageView2;
 
-- (void) setlinkImage:(NSString *)url size:(CGSize)size;
+-(void)setlinkImageViewLeft:(NSString *)url size:(CGSize)size;
+-(void)setlinkImageViewRight:(NSString *)url size:(CGSize)size;
 @end

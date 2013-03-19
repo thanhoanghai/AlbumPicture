@@ -2,7 +2,7 @@
 //  SecondView.m
 //  TestApp
 
-
+#import <QuartzCore/QuartzCore.h>
 #import "AlbumViewController.h"
 #import "STSegmentedControl.h"
 #import "AlbumCell.h"
@@ -58,15 +58,15 @@
     
     
     //REQUEST HELPER
-    [self showHUDWithString];
-    [LRRequestHelper loadLink:LINK_LIST_TYPE_PHIM success:^(id result){
-        {
-            NSLog(@"%@",result);
-            [self hideHUD];
-        }
-    } failure:^(NSString *err){
-        NSLog(@"Errororororororo %@",err);
-    }];
+//    [self showHUDWithString];
+//    [LRRequestHelper loadLink:LINK_LIST_TYPE_PHIM success:^(id result){
+//        {
+//            NSLog(@"%@",result);
+//            [self hideHUD];
+//        }
+//    } failure:^(NSString *err){
+//        NSLog(@"Errororororororo %@",err);
+//    }];
     
 }
 
@@ -163,31 +163,33 @@
     
     [pullToRefreshManager_ relocatePullToRefreshView];
 }
+#pragma mark - UI
+-(void)setShadowForImage:(UIImageView*)img
+{
+    img.layer.shadowColor = [UIColor blackColor].CGColor;
+    img.layer.shadowOpacity = 1.0f;
+    img.layer.shadowOffset = CGSizeMake(3.0f, 3.0f);
+    img.layer.shadowRadius = 2.0f;
+    img.layer.masksToBounds = NO;
+    UIBezierPath *path = [UIBezierPath bezierPathWithRect:img.bounds];
+    img.layer.shadowPath = path.CGPath;
+   
+}
+
 #pragma mark -
 #pragma mark UITableView methods
 
-/**
- * Asks the data source to return the number of sections in the table view
- *
- * @param An object representing the table view requesting this information.
- * @return The number of sections in tableView.
- */
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return 1;
 }
 
-/**
- * Asks the data source for a cell to insert in a particular location of the table view
- *
- * @param tableView: A table-view object requesting the cell.
- * @param indexPath: An index path locating a row in tableView.
- * @return An object inheriting from UITableViewCellthat the table view can use for the specified row.
- */
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    //CUSTOME CELL
     static NSString *CellIdentifier = @"AlbumCell";
     AlbumCell *cell = (AlbumCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    // Configure the cell...
     if(cell==nil){
         cell = [[AlbumCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"AlbumCell"];
     }
@@ -195,45 +197,42 @@
     [cell setlinkImage:@"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTZmCoTsuOs-03ZElCvRKCMQOvBMVWGMFFJaRGY_uMsjFdjoT9n"
                   size:CGSizeMake(IMAGE_SIZE, IMAGE_SIZE)];
     
+    cell.iconImageView.tag = indexPath.row;
     
-	
-    //	if (result == nil) {
-    //
-    //        result = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    //        result.selectionStyle = UITableViewCellSelectionStyleNone;
-    //        result.textLabel.backgroundColor = [UIColor clearColor];
-    //    }
-    //
-    //    result.textLabel.text = [NSString stringWithFormat:@"Row %i", indexPath.row];
-    //    UIView *backgroundView = [[UIView alloc] initWithFrame:result.frame];
-    //
-    //    if (indexPath.row % 2 == 0) {
-    //        backgroundView.backgroundColor = [UIColor colorWithWhite:0.8f alpha:1.0f];
-    //    } else {
-    //        backgroundView.backgroundColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
-    //    }
-    //    result.backgroundView = backgroundView;
+    //ADD GESTURE FOR IMAGE IN CELL
+    cell.iconImageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]
+                                             initWithTarget:self action:@selector(ClickEventOnImage:)];
+    [tapRecognizer setNumberOfTouchesRequired:1];
+    [tapRecognizer setDelegate:self];
+    [cell.iconImageView addGestureRecognizer:tapRecognizer];
+    
+    
+    //SHADOW FOR IMAGE
+    [self setShadowForImage:cell.iconImageView];
+    
     return cell;
 }
+-(void) ClickEventOnImage:(id) sender
+{
+    UITapGestureRecognizer *tap = (UITapGestureRecognizer*)sender;
+        if ([tap.view isKindOfClass:[UIImageView class]]) {
+            UIImageView *tapView = (UIImageView*)tap.view;
+            if (!tapView.image) {
+                return;
+            }else
+            {
+                //int tag= tapView.tag;
+            }
+        }
+          
+}
 
-/**
- * Tells the data source to return the number of rows in a given section of a table view
- *
- * @param tableView: The table-view object requesting this information.
- * @param section: An index number identifying a section in tableView.
- * @return The number of rows in section.
- */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 5 + (5 * reloads_);
 }
 
-/**
- * Asks the delegate for the height to use for a row in a specified location.
- *
- * @param The table-view object requesting this information.
- * @param indexPath: An index path that locates a row in tableView.
- * @return A floating-point value that specifies the height (in points) that row should be.
- */
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return tableView.rowHeight;
 }
@@ -249,14 +248,6 @@
 #pragma mark -
 #pragma mark MNMBottomPullToRefreshManagerClient
 
-/**
- * This is the same delegate method as UIScrollView but required in MNMBottomPullToRefreshManagerClient protocol
- * to warn about its implementation. Here you have to call [MNMBottomPullToRefreshManager tableViewScrolled]
- *
- * Tells the delegate when the user scrolls the content view within the receiver.
- *
- * @param scrollView: The scroll-view object in which the scrolling occurred.
- */
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [pullToRefreshManager_ tableViewScrolled];
 }

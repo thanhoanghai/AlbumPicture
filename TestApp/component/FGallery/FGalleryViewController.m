@@ -420,6 +420,8 @@
 - (void)resetImageViewZoomLevels
 {
 	// resize all the image views
+    _currentIndex = 0;
+    [self updateTitle];
 	NSUInteger i, count = [_photoViews count];
 	for (i = 0; i < count; i++) {
 		FGalleryPhotoView * photoView = [_photoViews objectAtIndex:i];

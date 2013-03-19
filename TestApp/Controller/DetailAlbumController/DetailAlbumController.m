@@ -117,26 +117,29 @@
     
     [pullToRefreshManager_ relocatePullToRefreshView];
 }
+
+
+#pragma mark - UI
+-(void)setShadowForImage:(UIImageView*)img
+{
+    img.layer.shadowColor = [UIColor blackColor].CGColor;
+    img.layer.shadowOpacity = 1.0f;
+    img.layer.shadowOffset = CGSizeMake(3.0f, 3.0f);
+    img.layer.shadowRadius = 2.0f;
+    img.layer.masksToBounds = NO;
+    UIBezierPath *path = [UIBezierPath bezierPathWithRect:img.bounds];
+    img.layer.shadowPath = path.CGPath;
+    
+}
+
+
+
 #pragma mark -
 #pragma mark UITableView methods
 
-/**
- * Asks the data source to return the number of sections in the table view
- *
- * @param An object representing the table view requesting this information.
- * @return The number of sections in tableView.
- */
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return 1;
 }
-
-/**
- * Asks the data source for a cell to insert in a particular location of the table view
- *
- * @param tableView: A table-view object requesting the cell.
- * @param indexPath: An index path locating a row in tableView.
- * @return An object inheriting from UITableViewCellthat the table view can use for the specified row.
- */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"DetailCell";
@@ -145,30 +148,21 @@
         cell = [[DetailAlbumCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"DetailCell"];
     }
         
-    [cell setlinkImage:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTCBWVPkf2R9Hh10B1fUCFkFJmAniaKEg0ExMONMg1-qdMhWuBm"
+    [cell setlinkImageViewLeft:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTCBWVPkf2R9Hh10B1fUCFkFJmAniaKEg0ExMONMg1-qdMhWuBm"
+     size:CGSizeMake(IMAGE_SIZE, IMAGE_SIZE)];
+     [cell setlinkImageViewRight:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTCBWVPkf2R9Hh10B1fUCFkFJmAniaKEg0ExMONMg1-qdMhWuBm"
                   size:CGSizeMake(IMAGE_SIZE, IMAGE_SIZE)];
+    
+    [self setShadowForImage:cell.iconImageView];
+    [self setShadowForImage:cell.iconImageView2];
     
     return cell;
 }
 
-/**
- * Tells the data source to return the number of rows in a given section of a table view
- *
- * @param tableView: The table-view object requesting this information.
- * @param section: An index number identifying a section in tableView.
- * @return The number of rows in section.
- */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 5 + (5 * reloads_);
 }
 
-/**
- * Asks the delegate for the height to use for a row in a specified location.
- *
- * @param The table-view object requesting this information.
- * @param indexPath: An index path that locates a row in tableView.
- * @return A floating-point value that specifies the height (in points) that row should be.
- */
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return tableView.rowHeight;
 }

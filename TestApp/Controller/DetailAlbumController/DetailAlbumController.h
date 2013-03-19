@@ -9,7 +9,7 @@
 
 @class STSegmentedControl;
 
-@interface DetailAlbumController : UIViewController <FGalleryViewControllerDelegate>
+@interface DetailAlbumController : UIViewController <FGalleryViewControllerDelegate,MNMBottomPullToRefreshManagerClient>
 {
     
     //pull to refress manager

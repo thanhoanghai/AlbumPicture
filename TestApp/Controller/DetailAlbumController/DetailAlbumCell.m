@@ -33,10 +33,15 @@
 
     // Configure the view for the selected state
 }
--(void)setlinkImage:(NSString *)url size:(CGSize)size
+-(void)setlinkImageViewLeft:(NSString *)url size:(CGSize)size
 {
     if(url != nil)
         [self.iconImageView setImageWithURL:[[NSURL alloc] initWithString:url] withSize:size placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
+}
+-(void)setlinkImageViewRight:(NSString *)url size:(CGSize)size
+{
+    if(url != nil)
+        [self.iconImageView2 setImageWithURL:[[NSURL alloc] initWithString:url] withSize:size placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
 }
 
 

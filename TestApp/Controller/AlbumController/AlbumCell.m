@@ -14,7 +14,7 @@
 
 @synthesize iconImageView = _iconImageView;
 @synthesize contentLabel = _contentLabel;
-@synthesize price = _price;
+
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
