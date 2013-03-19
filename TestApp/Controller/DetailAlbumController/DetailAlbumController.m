@@ -33,7 +33,7 @@
     originalImages = [[NSMutableArray alloc]init];
     [originalImages addObject:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSHSZKWpTX6509BBTDPOfFjxY6BPYxK-hxINX6baRjEoAu35HdaCA"];
     [originalImages addObject:@"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSWXWCd6nWedy3ImzLrJ9sTaL_9w5Pn7MHnwRfik80SZSGZ222N"];
-    [originalImages addObject:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSHSZKWpTX6509BBTDPOfFjxY6BPYxK-hxINX6baRjEoAu35HdaCA"];
+    [originalImages addObject:@"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSd4dasldsbxB2_Hrpp5T-gG9UH_eLCKZGhHudEBLzWOvxt4yh3-w"];
 }
 
 - (void)valueChanged:(id)sender {
@@ -148,10 +148,11 @@
         cell = [[DetailAlbumCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"DetailCell"];
     }
         
-    [cell setlinkImageViewLeft:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTCBWVPkf2R9Hh10B1fUCFkFJmAniaKEg0ExMONMg1-qdMhWuBm"
+    [cell setlinkImageViewLeft:[originalImages objectAtIndex:(indexPath.row%3)]
      size:CGSizeMake(IMAGE_SIZE, IMAGE_SIZE)];
-     [cell setlinkImageViewRight:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTCBWVPkf2R9Hh10B1fUCFkFJmAniaKEg0ExMONMg1-qdMhWuBm"
-                  size:CGSizeMake(IMAGE_SIZE, IMAGE_SIZE)];
+    [cell setlinkImageViewRight:[originalImages objectAtIndex:((indexPath.row+2)%3)]
+                          size:CGSizeMake(IMAGE_SIZE, IMAGE_SIZE)];
+
     
     [self setShadowForImage:cell.iconImageView];
     [self setShadowForImage:cell.iconImageView2];
