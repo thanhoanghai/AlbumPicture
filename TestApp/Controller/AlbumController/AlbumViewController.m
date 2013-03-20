@@ -9,8 +9,9 @@
 #import "MBProgressHUD.h"
 #import "LRRequestHelper.h"
 #import "LRURLs.h"
-
-
+#import "AFNetworking.h"
+#import <CommonCrypto/CommonDigest.h>
+#import "EncodeMd5.h"
 
 @implementation AlbumViewController
 @synthesize segment;
@@ -18,7 +19,8 @@
 @synthesize pickerView;
 @synthesize viewContentPicker;
 
-
+#define IMAGE_W 106
+#define IMAGE_H 85
 #define IMAGE_SIZE (79.0 * [UIScreen mainScreen].scale)
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -59,7 +61,7 @@
     
     //REQUEST HELPER
 //    [self showHUDWithString];
-//    [LRRequestHelper loadLink:LINK_LIST_TYPE_PHIM success:^(id result){
+//    [LRRequestHelper loadLink:LINK_REQUEST_ALBUM success:^(id result){
 //        {
 //            NSLog(@"%@",result);
 //            [self hideHUD];
@@ -67,7 +69,20 @@
 //    } failure:^(NSString *err){
 //        NSLog(@"Errororororororo %@",err);
 //    }];
+
+    NSString *speedLabel = [[NSString alloc] initWithFormat:@"galleriesget_pics1@i@s"];
+    NSString *hashedString = [EncodeMd5 getLinkKeyEndcode:LINK_REQUEST_ALBUM withKey:speedLabel];
+    NSLog(@"%@", hashedString);
     
+    
+    NSURL *url = [[NSURL alloc] initWithString:hashedString];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        NSLog(@"%@", JSON);
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        NSLog(@"Request Failed with Error: %@, %@", error, error.userInfo);
+    }];
+    [operation start];
     
     //ADD CUSTOM TOP RIGHT BUTTON
     [self addbntRigtCustom:3];
@@ -109,6 +124,12 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark Action-Navigation-Button
+-(void) actionIconApp:(id)sender
+{
+    
 }
 
 #pragma mark PickerView
@@ -205,7 +226,7 @@
     }
     
     [cell setlinkImage:@"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTZmCoTsuOs-03ZElCvRKCMQOvBMVWGMFFJaRGY_uMsjFdjoT9n"
-                  size:CGSizeMake(IMAGE_SIZE, IMAGE_SIZE)];
+                  size:CGSizeMake(IMAGE_W, IMAGE_H)];
     
     cell.iconImageView.tag = indexPath.row;
     
@@ -304,8 +325,6 @@
         [HUD hide:YES];
     }
 }
-
-
 
 
 @end

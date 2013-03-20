@@ -12,32 +12,22 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3fl-7b-vSH">
-                                <rect key="frame" x="118" y="168" width="85" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Splash">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="2" eventType="touchUpInside" id="zIu-lA-NZi"/>
-                                </connections>
-                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="splash.png" id="lQK-3I-Xl6">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="cZL-8b-cVK"/>
                     <connections>
+                        <outlet property="uiImageView" destination="lQK-3I-Xl6" id="oAI-3t-Xj0"/>
                         <segue destination="cYU-3t-Lqw" kind="push" identifier="MySegue" id="kmO-Rg-LtS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="641" y="118"/>
+            <point key="canvasLocation" x="515" y="-208"/>
         </scene>
         <!--Album View Controller-->
         <scene sceneID="f3z-3h-w2C">
@@ -117,7 +107,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8CI-k1-AKy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1081" y="118"/>
+            <point key="canvasLocation" x="811" y="374"/>
         </scene>
         <!--Detail Album Controller-->
         <scene sceneID="OTD-2V-EVw">
@@ -155,11 +145,43 @@
                     <navigationItem key="navigationItem" id="tcm-JQ-YFy"/>
                     <connections>
                         <outlet property="tabbleViewAlbum" destination="MqA-vM-U3b" id="iYP-r0-K3a"/>
+                        <segue destination="rga-ET-zmC" kind="push" identifier="pushToViewFullImage" id="dXK-sr-nmj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vzq-jX-IH7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1498" y="124"/>
+            <point key="canvasLocation" x="1214" y="-194"/>
+        </scene>
+        <!--View Full Image Controller-->
+        <scene sceneID="VuR-GF-Dlz">
+            <objects>
+                <viewController storyboardIdentifier="ViewFullImageController" id="rga-ET-zmC" customClass="ViewFullImageController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bk6-PF-uPm">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="9tU-Gj-go5">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="IL1-j1-dRK">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="tQc-Gx-96g"/>
+                    <connections>
+                        <outlet property="imageView" destination="IL1-j1-dRK" id="ig1-5M-A2n"/>
+                        <outlet property="scrollView" destination="9tU-Gj-go5" id="AMe-CA-WuU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N3y-p1-0wc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1364" y="383"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1oh-xQ-1jW">
@@ -180,8 +202,11 @@
             <point key="canvasLocation" x="115" y="118"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="splash.png" width="480" height="800"/>
+    </resources>
     <classes>
-        <class className="AlbumViewController" superclassName="UIViewController">
+        <class className="AlbumViewController" superclassName="BaseViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AlbumViewController.h"/>
             <relationships>
                 <relationship kind="action" name="showTypeAlbum:"/>
@@ -191,6 +216,9 @@
                 <relationship kind="outlet" name="viewContentPicker" candidateClass="UIView"/>
             </relationships>
         </class>
+        <class className="BaseViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BaseViewController.h"/>
+        </class>
         <class className="DetailAlbumController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailAlbumController.h"/>
             <relationships>
@@ -198,10 +226,17 @@
                 <relationship kind="outlet" name="tabbleViewAlbum" candidateClass="UITableView"/>
             </relationships>
         </class>
-        <class className="ViewController" superclassName="UIViewController">
+        <class className="ViewController" superclassName="BaseViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
-                <relationship kind="action" name="buttonPressed:"/>
+                <relationship kind="outlet" name="uiImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="ViewFullImageController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewFullImageController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
             </relationships>
         </class>
     </classes>

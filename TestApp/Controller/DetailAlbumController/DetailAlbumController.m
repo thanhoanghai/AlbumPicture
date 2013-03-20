@@ -13,7 +13,8 @@
 @synthesize tabbleViewAlbum;
 
 
-
+#define IMAGE_W 130
+#define IMAGE_H 170
 #define IMAGE_SIZE (79.0 * [UIScreen mainScreen].scale)
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -153,9 +154,9 @@
     }
         
     [cell setlinkImageViewLeft:[originalImages objectAtIndex:(indexPath.row%3)]
-     size:CGSizeMake(IMAGE_SIZE, IMAGE_SIZE)];
+     size:CGSizeMake(IMAGE_W, IMAGE_H)];
     [cell setlinkImageViewRight:[originalImages objectAtIndex:((indexPath.row+2)%3)]
-                          size:CGSizeMake(IMAGE_SIZE, IMAGE_SIZE)];
+                          size:CGSizeMake(IMAGE_W   , IMAGE_H)];
 
     
     [self setShadowForImage:cell.iconImageView];
@@ -175,7 +176,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
-    [self gotoGallery];
+    //[self gotoGallery];
+        [self performSegueWithIdentifier:@"pushToViewFullImage" sender:[self.tabbleViewAlbum cellForRowAtIndexPath:indexPath]];
         
 }
 

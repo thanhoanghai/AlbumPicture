@@ -126,7 +126,7 @@
                                 }
                                 failure:^(AFHTTPRequestOperation *operation, NSError *error){
                                     if(failureBlock){
-                                        failureBlock(@"Error with Search");
+                                        failureBlock([error localizedDescription]);
                                     }
                                     // failure
                                 }];
