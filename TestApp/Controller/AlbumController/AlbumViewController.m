@@ -125,8 +125,11 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
-#pragma mark Action-Navigation-Button
+#pragma mark Action-TopButtonNavigation
+-(void) actionIconTypeAlbum:(id)sender
+{
+    [self showTypeAlbum:NO];
+}
 -(void) actionIconApp:(id)sender
 {
     
@@ -158,8 +161,8 @@
     viewContentPicker.hidden = YES;
 }
 
-- (IBAction)showTypeAlbum:(id)sender {
-    viewContentPicker.hidden = NO;
+- (void)showTypeAlbum:(BOOL) abc {
+    viewContentPicker.hidden = abc;
 }
 
 
@@ -225,38 +228,14 @@
         cell = [[AlbumCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"AlbumCell"];
     }
     
-    [cell setlinkImage:@"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTZmCoTsuOs-03ZElCvRKCMQOvBMVWGMFFJaRGY_uMsjFdjoT9n"
+    [cell setlinkImage:@"http://t3.gstatic.com/images?q=tbn:ANd9GcQIz6wCv3vKTJRnmrnG6q-N387pROv1av3yywpg6jAxgkMBZ84oFA"
                   size:CGSizeMake(IMAGE_W, IMAGE_H)];
-    
-    cell.iconImageView.tag = indexPath.row;
-    
-    //ADD GESTURE FOR IMAGE IN CELL
-    cell.iconImageView.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]
-                                             initWithTarget:self action:@selector(ClickEventOnImage:)];
-    [tapRecognizer setNumberOfTouchesRequired:1];
-    [tapRecognizer setDelegate:self];
-    [cell.iconImageView addGestureRecognizer:tapRecognizer];
-    
+        
     
     //SHADOW FOR IMAGE
     [self setShadowForImage:cell.iconImageView];
     
     return cell;
-}
--(void) ClickEventOnImage:(id) sender
-{
-    UITapGestureRecognizer *tap = (UITapGestureRecognizer*)sender;
-        if ([tap.view isKindOfClass:[UIImageView class]]) {
-            UIImageView *tapView = (UIImageView*)tap.view;
-            if (!tapView.image) {
-                return;
-            }else
-            {
-                //int tag= tapView.tag;
-            }
-        }
-          
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

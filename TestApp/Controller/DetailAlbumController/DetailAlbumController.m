@@ -32,9 +32,10 @@
     gallery = [[FGalleryViewController alloc] initWithPhotoSource:self];
 
     originalImages = [[NSMutableArray alloc]init];
-    [originalImages addObject:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSHSZKWpTX6509BBTDPOfFjxY6BPYxK-hxINX6baRjEoAu35HdaCA"];
-    [originalImages addObject:@"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSWXWCd6nWedy3ImzLrJ9sTaL_9w5Pn7MHnwRfik80SZSGZ222N"];
-    [originalImages addObject:@"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSd4dasldsbxB2_Hrpp5T-gG9UH_eLCKZGhHudEBLzWOvxt4yh3-w"];
+    [originalImages addObject:@"http://t2.gstatic.com/images?q=tbn:ANd9GcRerek_2gJSHlHyjuWu2ZFmpW1_-oEonQHsb4qr4invwdDgaHKH"];
+    [originalImages addObject:@"http://t3.gstatic.com/images?q=tbn:ANd9GcQfDS4SlFz7_Bh1jOlbPTVl1DYUcr8Ip8VnfabG7vdq2Nky66aT"];
+    [originalImages addObject:@"http://t1.gstatic.com/images?q=tbn:ANd9GcTgrfC46A21Lq8Vvum6_axC0tZ9V7wAWAj4O05X2vn-QaSBF2DMPw"];
+        [originalImages addObject:@"http://t1.gstatic.com/images?q=tbn:ANd9GcRFTj__7zCPbkNdIGUDIy9D9674KW2mntISnaaKxGyOEoAGvqVL"];
     
     
     //SET TITLE FOR DETAIL ALBUM
@@ -153,10 +154,30 @@
         cell = [[DetailAlbumCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"DetailCell"];
     }
         
-    [cell setlinkImageViewLeft:[originalImages objectAtIndex:(indexPath.row%3)]
+    [cell setlinkImageViewLeft:[originalImages objectAtIndex:(indexPath.row%4)]
      size:CGSizeMake(IMAGE_W, IMAGE_H)];
-    [cell setlinkImageViewRight:[originalImages objectAtIndex:((indexPath.row+2)%3)]
+    [cell setlinkImageViewRight:[originalImages objectAtIndex:((indexPath.row+2)%4)]
                           size:CGSizeMake(IMAGE_W   , IMAGE_H)];
+    
+    cell.iconImageView.tag = indexPath.row*2;
+    cell.iconImageView2.tag = indexPath.row*2 + 1;
+    
+    //ADD GESTURE FOR IMAGE IN CELL
+    cell.iconImageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]
+                                             initWithTarget:self action:@selector(ClickEventOnImage:)];
+    [tapRecognizer setNumberOfTouchesRequired:1];
+    [tapRecognizer setDelegate:self];
+    [cell.iconImageView addGestureRecognizer:tapRecognizer];
+    
+    cell.iconImageView2.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapRecognizer2 = [[UITapGestureRecognizer alloc]
+                                             initWithTarget:self action:@selector(ClickEventOnImage:)];
+    [tapRecognizer2 setNumberOfTouchesRequired:1];
+    [tapRecognizer2 setDelegate:self];
+    [cell.iconImageView2 addGestureRecognizer:tapRecognizer2];
+
+
 
     
     [self setShadowForImage:cell.iconImageView];
@@ -164,6 +185,22 @@
     
     return cell;
 }
+-(void) ClickEventOnImage:(id) sender
+{
+    UITapGestureRecognizer *tap = (UITapGestureRecognizer*)sender;
+    if ([tap.view isKindOfClass:[UIImageView class]]) {
+        UIImageView *tapView = (UIImageView*)tap.view;
+        if (!tapView.image) {
+            return;
+        }else
+        {
+            //int tag= tapView.tag;
+            NSLog(@"Tag=: %d",tapView.tag);
+            [self performSegueWithIdentifier:@"pushToViewFullImage" sender:self];
+        }
+    }
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 5 + (5 * reloads_);
@@ -177,7 +214,6 @@
     
     
     //[self gotoGallery];
-        [self performSegueWithIdentifier:@"pushToViewFullImage" sender:[self.tabbleViewAlbum cellForRowAtIndexPath:indexPath]];
         
 }
 

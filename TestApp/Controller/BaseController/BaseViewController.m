@@ -156,7 +156,7 @@
     //self.navigationItem.leftBarButtonItem = bntLeftCustom;
     
     NSMutableArray *listButton = [NSMutableArray arrayWithObjects:bntLeftCustom,bntRightCustom,nil];//[[NSArray alloc] arra:bntLeftCustom, bntRightCustom, nil] ;
-    self.navigationItem.leftBarButtonItem = listButton;
+    //self.navigationItem.leftBarButtonItem = listButton;
 
     
 }

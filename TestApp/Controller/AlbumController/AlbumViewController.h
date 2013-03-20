@@ -10,7 +10,7 @@
 
 @class STSegmentedControl;
 
-@interface AlbumViewController : BaseViewController <UIPickerViewDelegate, UIPickerViewDataSource ,UIGestureRecognizerDelegate,MNMBottomPullToRefreshManagerClient>
+@interface AlbumViewController : BaseViewController <UIPickerViewDelegate, UIPickerViewDataSource,MNMBottomPullToRefreshManagerClient>
 {
     NSInteger selectedButton;
     STSegmentedControl *segment;
