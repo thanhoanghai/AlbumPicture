@@ -16,6 +16,7 @@
 @implementation ViewFullImageController
 @synthesize scrollView;
 @synthesize imageView;
+@synthesize imageViewAds;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,8 +36,10 @@
     scrollView.minimumZoomScale = 1.0f;
     scrollView.delegate = self;
     
-    [self.imageView setImageWithURL:[[NSURL alloc] initWithString:@"http://www.janlamm.com/Superman/Superman8.jpg"]  placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
-    //self.navigationController.navigationBar.hidden = YES;
+    [self.imageView setImageWithURL:[[NSURL alloc] initWithString:@"http://www.cavemancircus.com/wp-content/uploads/images/2012/august/asian_2/hot_asian_girls_4.jpg"]  placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
+    
+        [self.imageViewAds setImageWithURL:[[NSURL alloc] initWithString:@"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSDlITgoDxJuYLzINzBYfgSXI92YYyX3vTqbwQucI9LfALvGqon"]  placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
+    self.navigationController.navigationBar.hidden = YES;
 
 }
 
@@ -54,6 +57,7 @@
 - (void)viewDidUnload {
     [self setScrollView:nil];
     [self setImageView:nil];
+    [self setImageViewAds:nil];
     [super viewDidUnload];
 }
 @end

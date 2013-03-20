@@ -125,7 +125,9 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
 #pragma mark Action-TopButtonNavigation
+
 -(void) actionIconTypeAlbum:(id)sender
 {
     [self showTypeAlbum:NO];

@@ -52,7 +52,12 @@
     // create the array to hold the buttons, which then gets added to the toolbar
     NSMutableArray* buttons = [[NSMutableArray alloc] initWithCapacity:2];
     
-    
+//    UIButton *customView = [UIButton buttonWithType:UIButtonTypeCustom];
+//    customView.frame = CGRectMake(0, 0, 35, 30);
+//    [customView setImage:[UIImage imageNamed:@"home_icon"] forState:UIControlStateNormal];
+//    [customView setImage:[UIImage imageNamed:@"home_icon"] forState:UIControlStateHighlighted];
+//    [customView addTarget:self action:@selector(actionIconApp) forControlEvents:UIControlEventTouchUpInside];
+//    bntLeft1 = [[UIBarButtonItem alloc] initWithCustomView:customView];
     // create a standard “compose” button
     bntLeft1 = [[UIBarButtonItem alloc]
                      initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(actionIconApp:)];
