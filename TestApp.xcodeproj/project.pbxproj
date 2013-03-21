@@ -64,6 +64,7 @@
 		EBB7EEF916F5951E00FACC3E /* DetailAlbumController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB7EEF816F5951D00FACC3E /* DetailAlbumController.m */; };
 		EBB7EF1316F59F4200FACC3E /* DetailAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB7EF1116F59F4200FACC3E /* DetailAlbumCell.m */; };
 		EBB7EF1416F59F4200FACC3E /* DetailAlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBB7EF1216F59F4200FACC3E /* DetailAlbumCell.xib */; };
+		EBDE73F116FB69D000A5EBC2 /* AlbumObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDE73F016FB69D000A5EBC2 /* AlbumObject.m */; };
 		F32F858F16F70A7700F14CF0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F32F858E16F70A7700F14CF0 /* QuartzCore.framework */; };
 		F356AE8716F70663003DF0D8 /* back_button_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F356AE8316F70663003DF0D8 /* back_button_pressed.png */; };
 		F356AE8816F70663003DF0D8 /* back_button_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F356AE8416F70663003DF0D8 /* back_button_pressed@2x.png */; };
@@ -170,6 +171,8 @@
 		EBB7EF1016F59F4200FACC3E /* DetailAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailAlbumCell.h; sourceTree = "<group>"; };
 		EBB7EF1116F59F4200FACC3E /* DetailAlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailAlbumCell.m; sourceTree = "<group>"; };
 		EBB7EF1216F59F4200FACC3E /* DetailAlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailAlbumCell.xib; sourceTree = "<group>"; };
+		EBDE73ED16FB697900A5EBC2 /* AlbumObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumObject.h; sourceTree = "<group>"; };
+		EBDE73F016FB69D000A5EBC2 /* AlbumObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumObject.m; sourceTree = "<group>"; };
 		F32F858E16F70A7700F14CF0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F356AE8316F70663003DF0D8 /* back_button_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_button_pressed.png; sourceTree = "<group>"; };
 		F356AE8416F70663003DF0D8 /* back_button_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_button_pressed@2x.png"; sourceTree = "<group>"; };
@@ -438,6 +441,23 @@
 			path = Image;
 			sourceTree = "<group>";
 		};
+		EBDE73E216FB666200A5EBC2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EBDE73EC16FB697900A5EBC2 /* Album */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EBDE73EC16FB697900A5EBC2 /* Album */ = {
+			isa = PBXGroup;
+			children = (
+				EBDE73F016FB69D000A5EBC2 /* AlbumObject.m */,
+				EBDE73ED16FB697900A5EBC2 /* AlbumObject.h */,
+			);
+			path = Album;
+			sourceTree = "<group>";
+		};
 		F356AE8C16F70687003DF0D8 /* FGallery */ = {
 			isa = PBXGroup;
 			children = (
@@ -493,6 +513,7 @@
 		F43DA6591454565300F31F0B /* TestApp */ = {
 			isa = PBXGroup;
 			children = (
+				EBDE73E216FB666200A5EBC2 /* Model */,
 				EBB7EED516F58B9F00FACC3E /* Resource */,
 				EBB7EE7A16F58B9300FACC3E /* component */,
 				EBB7EE6C16F58A4400FACC3E /* Controller */,
@@ -645,6 +666,7 @@
 				EB4E85D616F8C49800960939 /* BaseViewController.m in Sources */,
 				F35C1B4816F9B51300F55923 /* EncodeMd5.m in Sources */,
 				EB0E20FA16FA0AAA00E1925E /* ViewFullImageController.m in Sources */,
+				EBDE73F116FB69D000A5EBC2 /* AlbumObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
