@@ -12,6 +12,7 @@
 #import "AFNetworking.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "EncodeMd5.h"
+#import "AlbumObject.h"
 
 @implementation AlbumViewController
 @synthesize segment;
@@ -57,32 +58,16 @@
                    @"Football",
                    @"Picnic",
                    nil];
-    
-    
-    //REQUEST HELPER
-//    [self showHUDWithString];
-//    [LRRequestHelper loadLink:LINK_REQUEST_ALBUM success:^(id result){
-//        {
-//            NSLog(@"%@",result);
-//            [self hideHUD];
-//        }
-//    } failure:^(NSString *err){
-//        NSLog(@"Errororororororo %@",err);
-//    }];
+ 
+    //GET DATA ALBUM OBJECT FROM SERVER
+    listAlbumObject = [[NSMutableArray alloc] init ];
+    [self showHUDWithString];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self getDataAlbumFromServer];
+        [self hideHUD];
+    });
 
-    NSString *speedLabel = [[NSString alloc] initWithFormat:@"galleriesget_pics1@i@s"];
-    NSString *hashedString = [EncodeMd5 getLinkKeyEndcode:LINK_REQUEST_ALBUM withKey:speedLabel];
-    NSLog(@"%@", hashedString);
-    
-    
-    NSURL *url = [[NSURL alloc] initWithString:hashedString];
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        NSLog(@"%@", JSON);
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        NSLog(@"Request Failed with Error: %@, %@", error, error.userInfo);
-    }];
-    [operation start];
+    [self getDataAlbumFromServer];
     
     //ADD CUSTOM TOP RIGHT BUTTON
     [self addbntRigtCustom:3];
@@ -126,6 +111,35 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark getDataFromServer-Json
+
+-(void)getDataAlbumFromServer
+{
+    NSString *speedLabel = [[NSString alloc] initWithFormat:@"galleriesget_pics1@i@s"];
+    NSString *hashedString = [EncodeMd5 getLinkKeyEndcode:LINK_REQUEST_ALBUM withKey:speedLabel];
+    NSLog(@"%@", hashedString);
+    
+    NSData *jsonData = [NSData dataWithContentsOfURL:[NSURL URLWithString:hashedString]];
+    if(jsonData)
+    {
+        NSError *error = nil;
+        id jsonObjects = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            NSLog(@"error is %@", [error localizedDescription]);
+            return;
+        }
+        NSDictionary *keys = [jsonObjects objectForKey:@"Pictures"];
+        // values in foreach loop
+        if([keys count] > 0 )
+        for (NSDictionary *key in keys) {
+            //NSLog(@"%@ is %@",key, [key objectForKey:@"name"]);
+            [listAlbumObject addObject: [AlbumObject itemWithDictionary:key ]];
+        }
+        [tabbleViewAlbum reloadData];
+    }
+}
+
+
 #pragma mark Action-TopButtonNavigation
 
 -(void) actionIconTypeAlbum:(id)sender
@@ -166,8 +180,6 @@
 - (void)showTypeAlbum:(BOOL) abc {
     viewContentPicker.hidden = abc;
 }
-
-
 
 #pragma mark Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -230,9 +242,12 @@
         cell = [[AlbumCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"AlbumCell"];
     }
     
-    [cell setlinkImage:@"http://t3.gstatic.com/images?q=tbn:ANd9GcQIz6wCv3vKTJRnmrnG6q-N387pROv1av3yywpg6jAxgkMBZ84oFA"
+    AlbumObject *item = [listAlbumObject objectAtIndex:indexPath.row];
+    
+    [cell setlinkImage:item.thumb
                   size:CGSizeMake(IMAGE_W, IMAGE_H)];
-        
+    cell.contentLabel.text = item.name;
+    
     
     //SHADOW FOR IMAGE
     [self setShadowForImage:cell.iconImageView];
@@ -241,7 +256,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5 + (5 * reloads_);
+    return [listAlbumObject count];
 }
 
 

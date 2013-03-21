@@ -15,14 +15,9 @@
     NSInteger selectedButton;
     STSegmentedControl *segment;
     
-    /**
-     * Pull to refresh manager
-     */
-    MNMBottomPullToRefreshManager *pullToRefreshManager_;
     
-    /**
-     * Reloads (for testing purposes)
-     */
+    /// * Pull to refresh manager
+    MNMBottomPullToRefreshManager *pullToRefreshManager_;
     NSUInteger reloads_;
     
     ///picker
@@ -31,7 +26,8 @@
     
     //hub loading
     MBProgressHUD *HUD;
-
+    
+    NSMutableArray *listAlbumObject;
 
 }
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
@@ -40,7 +36,7 @@
 @property (nonatomic,retain) STSegmentedControl *segment;
 
 - (IBAction)touchUpInsideButtonDonePicker:(id)sender;
-- (IBAction)showTypeAlbum:(id)sender;
+- (void)showTypeAlbum:(BOOL) abc;
 //hub loading
 - (void)showHUDWithString;
 - (void)hideHUD;

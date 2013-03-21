@@ -24,7 +24,7 @@
         sleep(1);
         [self performSegueWithIdentifier:@"MySegue" sender:self];
     });
-   
+  
 }
 
 - (IBAction)buttonPressed:(id)sender
