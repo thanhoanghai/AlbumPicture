@@ -14,13 +14,14 @@
 
 @implementation DetailAlbumController
 @synthesize tabbleViewAlbum;
-
+@synthesize galleryId;
 
 #define IMAGE_W 130
 #define IMAGE_H 170
 #define IMAGE_SIZE (79.0 * [UIScreen mainScreen].scale)
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -82,7 +83,7 @@
 -(void)getDataPictureFromServer
 {
     NSString *speedLabel = [[NSString alloc] initWithFormat:@"galleriesget_pics1@i@s"];
-    NSString *linkPicture = [EncodeMd5 getLinkRequestPicture:@"88" withPage:1 withKey:speedLabel];
+    NSString *linkPicture = [EncodeMd5 getLinkRequestPicture:galleryId withPage:1 withKey:speedLabel];
     //NSString *hashedString = [EncodeMd5 getLinkKeyEndcode:LINK_REQUEST_PICTURE withKey:speedLabel];
     NSLog(@"%@", linkPicture);
     

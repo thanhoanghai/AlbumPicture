@@ -15,6 +15,7 @@
 #import "ItemImageObject.h"
 #import "ItemAlbumObject.h"
 #import "ItemCategoriesObject.h"
+#import "DetailAlbumController.h"
 
 @implementation AlbumViewController
 @synthesize segment;
@@ -27,6 +28,7 @@
 #define IMAGE_SIZE (79.0 * [UIScreen mainScreen].scale)
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -207,9 +209,10 @@
 #pragma mark Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showAlbumDetail"]) {
-        //NSIndexPath *indexPath = [self.tabbleViewAlbum indexPathForSelectedRow];
-//        DetailAlbumViewController *destViewController = segue.destinationViewController;
-//        destViewController.recipeName = @"Hello";
+        NSIndexPath *indexPath = [self.tabbleViewAlbum indexPathForSelectedRow];
+        DetailAlbumController *destViewController = segue.destinationViewController;
+        ItemAlbumObject* item = [listAlbumObject objectAtIndex:indexPath.row];
+        destViewController.galleryId = item.id_;
     }
 }
 

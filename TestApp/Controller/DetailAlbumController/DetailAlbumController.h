@@ -21,14 +21,15 @@
     FGalleryViewController      *gallery;
     NSMutableArray              *originalImages;
     NSMutableArray              *listItemImage;
+
     int lengthListItemImage;
+    
 
 }
 
 
 @property (strong, nonatomic) IBOutlet UITableView *tabbleViewAlbum;
 @property (strong, nonatomic) IBOutlet UIView *UIviewMain;
-
-
+@property (strong, nonatomic) NSString *galleryId;
 
 @end
