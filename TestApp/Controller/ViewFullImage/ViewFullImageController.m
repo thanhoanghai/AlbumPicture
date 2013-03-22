@@ -8,6 +8,7 @@
 
 #import "ViewFullImageController.h"
 #import "UIImageView+AFNetworking.h"
+#import "ItemImageObject.h"
 
 @interface ViewFullImageController ()
 
@@ -17,6 +18,7 @@
 @synthesize scrollView;
 @synthesize imageView;
 @synthesize imageViewAds;
+@synthesize listItemImageFull;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,14 +33,15 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    indexImage = 0;
     
     scrollView.maximumZoomScale = 10.0f;
     scrollView.minimumZoomScale = 1.0f;
     scrollView.delegate = self;
     
-    [self.imageView setImageWithURL:[[NSURL alloc] initWithString:@"http://www.cavemancircus.com/wp-content/uploads/images/2012/august/asian_2/hot_asian_girls_4.jpg"]  placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
+    [self setLinkImageAtIndex:0];
     
-        [self.imageViewAds setImageWithURL:[[NSURL alloc] initWithString:@"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSDlITgoDxJuYLzINzBYfgSXI92YYyX3vTqbwQucI9LfALvGqon"]  placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
+    [self.imageViewAds setImageWithURL:[[NSURL alloc] initWithString:@"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSDlITgoDxJuYLzINzBYfgSXI92YYyX3vTqbwQucI9LfALvGqon"]  placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
     self.navigationController.navigationBar.hidden = YES;
 
 }
@@ -59,5 +62,33 @@
     [self setImageView:nil];
     [self setImageViewAds:nil];
     [super viewDidUnload];
+}
+- (IBAction)backToDetailAlbumView:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)nextImage:(id)sender {
+    indexImage = indexImage + 1;
+    if(indexImage < [listItemImageFull count])
+        [self setLinkImageAtIndex:indexImage];
+    else
+        indexImage = [listItemImageFull count] - 1;
+    
+}
+
+- (IBAction)backImage:(id)sender {
+    indexImage = indexImage -1 ;
+    if(indexImage >= 0)
+        [self setLinkImageAtIndex:indexImage];
+    else
+        indexImage = 0;
+
+}
+
+-(void)setLinkImageAtIndex:(int)index
+{
+    ItemImageObject *item = [listItemImageFull objectAtIndex:index];
+    [self.imageView setImageWithURL:[[NSURL alloc] initWithString: item.source]  placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
 }
 @end

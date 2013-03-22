@@ -220,6 +220,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="backToDetailAlbumView:" destination="rga-ET-zmC" eventType="touchUpInside" id="YUt-KC-Udj"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IRo-zn-dVl">
                                         <rect key="frame" x="214" y="5" width="40" height="40"/>
@@ -250,6 +253,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="backImage:" destination="rga-ET-zmC" eventType="touchUpInside" id="nSL-EK-4Ez"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AFJ-aK-M0J">
                                         <rect key="frame" x="273" y="5" width="40" height="40"/>
@@ -262,6 +268,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="nextImage:" destination="rga-ET-zmC" eventType="touchUpInside" id="GNq-r4-a67"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -310,42 +319,6 @@
         <image name="icon_right_hover.png" width="50" height="50"/>
         <image name="splash.png" width="480" height="800"/>
     </resources>
-    <classes>
-        <class className="AlbumViewController" superclassName="BaseViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AlbumViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="touchUpInsideButtonDonePicker:"/>
-                <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
-                <relationship kind="outlet" name="tabbleViewAlbum" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="viewContentPicker" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="BaseViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BaseViewController.h"/>
-        </class>
-        <class className="DetailAlbumController" superclassName="BaseViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailAlbumController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="UIviewMain" candidateClass="UIView"/>
-                <relationship kind="outlet" name="tabbleViewAlbum" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="ViewController" superclassName="BaseViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="buttonPressed:"/>
-                <relationship kind="outlet" name="uiImageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="ViewFullImageController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewFullImageController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="imageViewAds" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

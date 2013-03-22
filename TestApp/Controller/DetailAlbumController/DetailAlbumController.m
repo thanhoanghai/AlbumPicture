@@ -9,6 +9,7 @@
 #import "EncodeMd5.h"
 #import "LRURLs.h"
 #import "ItemImageObject.h"
+#import "ViewFullImageController.h"
 
 
 
@@ -59,7 +60,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
-    [self loadTable];
+    self.navigationController.navigationBar.hidden = NO;
 }
 
 
@@ -84,7 +85,6 @@
 {
     NSString *speedLabel = [[NSString alloc] initWithFormat:@"galleriesget_pics1@i@s"];
     NSString *linkPicture = [EncodeMd5 getLinkRequestPicture:galleryId withPage:1 withKey:speedLabel];
-    //NSString *hashedString = [EncodeMd5 getLinkKeyEndcode:LINK_REQUEST_PICTURE withKey:speedLabel];
     NSLog(@"%@", linkPicture);
     
     NSData *jsonData = [NSData dataWithContentsOfURL:[NSURL URLWithString:linkPicture]];
@@ -136,10 +136,9 @@
 
 #pragma mark Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"showAlbumDetail"]) {
-        //NSIndexPath *indexPath = [self.tabbleViewAlbum indexPathForSelectedRow];
-//        DetailAlbumViewController *destViewController = segue.destinationViewController;
-//        destViewController.recipeName = @"Hello";
+    if ([segue.identifier isEqualToString:@"pushToViewFullImage"]) {        
+        ViewFullImageController *destViewController = segue.destinationViewController;
+        destViewController.listItemImageFull = [[NSMutableArray alloc]initWithArray:listItemImage];;
     }
 }
 
