@@ -12,7 +12,9 @@
 #import "AFNetworking.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "EncodeMd5.h"
-#import "AlbumObject.h"
+#import "ItemImageObject.h"
+#import "ItemAlbumObject.h"
+#import "ItemCategoriesObject.h"
 
 @implementation AlbumViewController
 @synthesize segment;
@@ -49,25 +51,17 @@
     //default View picker
     viewContentPicker.hidden = YES;
     indexPicker = 0;
-    arrayListPicker = [[NSMutableArray alloc] initWithObjects:
-                   @"Sexy girl",
-                   @"Wind",
-                   @"Noen",
-                   @"Spring",
-                   @"Champion",
-                   @"Football",
-                   @"Picnic",
-                   nil];
- 
+    arrayListCategoriesPicker = [[NSMutableArray alloc] init ];
+    
+    
     //GET DATA ALBUM OBJECT FROM SERVER
     listAlbumObject = [[NSMutableArray alloc] init ];
     [self showHUDWithString];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self getDataAlbumFromServer];
+        [self getDataCategoriesFromServer];
         [self hideHUD];
     });
-
-    [self getDataAlbumFromServer];
     
     //ADD CUSTOM TOP RIGHT BUTTON
     [self addbntRigtCustom:3];
@@ -115,7 +109,7 @@
 
 -(void)getDataAlbumFromServer
 {
-    NSString *speedLabel = [[NSString alloc] initWithFormat:@"galleriesget_pics1@i@s"];
+    NSString *speedLabel = [[NSString alloc] initWithFormat:@"galleriesget_galleries1@i@s"];
     NSString *hashedString = [EncodeMd5 getLinkKeyEndcode:LINK_REQUEST_ALBUM withKey:speedLabel];
     NSLog(@"%@", hashedString);
     
@@ -128,15 +122,43 @@
             NSLog(@"error is %@", [error localizedDescription]);
             return;
         }
-        NSDictionary *keys = [jsonObjects objectForKey:@"Pictures"];
+        NSDictionary *keys = [jsonObjects objectForKey:@"Galerries"];
         // values in foreach loop
         if([keys count] > 0 )
-        for (NSDictionary *key in keys) {
-            //NSLog(@"%@ is %@",key, [key objectForKey:@"name"]);
-            [listAlbumObject addObject: [AlbumObject itemWithDictionary:key ]];
-        }
+            for (NSDictionary *key in keys) {               
+                [listAlbumObject addObject: [ItemAlbumObject itemWithDictionary:key ]];
+            }
         [tabbleViewAlbum reloadData];
+        [pullToRefreshManager_ relocatePullToRefreshView];
     }
+
+}
+
+-(void)getDataCategoriesFromServer
+{
+    NSString *speedLabel = [[NSString alloc] initWithFormat:@"galleriesget_categories1@i@s"];
+    NSString *hashedString = [EncodeMd5 getLinkKeyEndcode:LINK_REQUEST_CATEGORIES withKey:speedLabel];
+    NSLog(@"%@", hashedString);
+    
+    NSData *jsonData = [NSData dataWithContentsOfURL:[NSURL URLWithString:hashedString]];
+    if(jsonData)
+    {
+        NSError *error = nil;
+        id jsonObjects = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            NSLog(@"error is %@", [error localizedDescription]);
+            return;
+        }
+        NSDictionary *keys = [jsonObjects objectForKey:@"Categories"];
+        // values in foreach loop
+        if([keys count] > 0 )
+            for (NSDictionary *key in keys) {
+                [arrayListCategoriesPicker addObject: [ItemCategoriesObject itemWithDictionary:key ]];
+            }
+        //PICKER VIEW RELOAD DATA
+        [pickerView reloadAllComponents];
+    }
+    
 }
 
 
@@ -167,10 +189,11 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component;
 {
-	return [arrayListPicker count];
+	return [arrayListCategoriesPicker count];
 }
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return [arrayListPicker objectAtIndex:row];
+    ItemCategoriesObject *item = [arrayListCategoriesPicker objectAtIndex:row];
+    return item.cat_name;
 }
 
 - (IBAction)touchUpInsideButtonDonePicker:(id)sender {
@@ -242,7 +265,7 @@
         cell = [[AlbumCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"AlbumCell"];
     }
     
-    AlbumObject *item = [listAlbumObject objectAtIndex:indexPath.row];
+    ItemAlbumObject *item = [listAlbumObject objectAtIndex:indexPath.row];
     
     [cell setlinkImage:item.thumb
                   size:CGSizeMake(IMAGE_W, IMAGE_H)];
@@ -303,24 +326,6 @@
     [self performSelector:@selector(loadTable) withObject:nil afterDelay:1.0f];
 }
 
-#pragma mark HUD_LOADING
-- (void)showHUDWithString{
-    
-    if(HUD == nil)
-    {
-        HUD = [[MBProgressHUD alloc] initWithView:self.view];
-        [[self view] addSubview:HUD];
-        
-        HUD.dimBackground = YES;
-        HUD.labelText = @"LOADING ... ";
-    }
-    [HUD show:YES];
-}
-- (void)hideHUD{
-    if(HUD != nil){
-        [HUD hide:YES];
-    }
-}
 
 
 @end

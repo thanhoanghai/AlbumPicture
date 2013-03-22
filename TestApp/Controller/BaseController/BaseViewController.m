@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import "MBProgressHUD.h"
 
 @interface BaseViewController ()
 
@@ -177,6 +178,26 @@
 -(void) actionIconAccount:(id)sender
 {
 }
+
+#pragma mark HUD_LOADING
+- (void)showHUDWithString{
+    
+    if(HUD == nil)
+    {
+        HUD = [[MBProgressHUD alloc] initWithView:self.view];
+        [[self view] addSubview:HUD];
+        
+        HUD.dimBackground = YES;
+        HUD.labelText = @"LOADING ... ";
+    }
+    [HUD show:YES];
+}
+- (void)hideHUD{
+    if(HUD != nil){
+        [HUD hide:YES];
+    }
+}
+
 
 
 @end

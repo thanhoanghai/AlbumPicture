@@ -6,10 +6,11 @@
 #import <UIKit/UIKit.h>
 #import "MNMBottomPullToRefreshManager.h"
 #import "FGalleryViewController.h"
+#import "BaseViewController.h"
 
 @class STSegmentedControl;
 
-@interface DetailAlbumController : UIViewController <FGalleryViewControllerDelegate,MNMBottomPullToRefreshManagerClient,UIGestureRecognizerDelegate>
+@interface DetailAlbumController : BaseViewController <FGalleryViewControllerDelegate,MNMBottomPullToRefreshManagerClient,UIGestureRecognizerDelegate>
 {
     
     //pull to refress manager
@@ -19,6 +20,8 @@
     //gallery
     FGalleryViewController      *gallery;
     NSMutableArray              *originalImages;
+    NSMutableArray              *listItemImage;
+    int lengthListItemImage;
 
 }
 

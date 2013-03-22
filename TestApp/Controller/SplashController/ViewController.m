@@ -20,11 +20,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        sleep(1);
-        [self performSegueWithIdentifier:@"MySegue" sender:self];
-    });
-  
+}
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    sleep(2);
+    [self performSegueWithIdentifier:@"MySegue" sender:self];
+
 }
 
 - (IBAction)buttonPressed:(id)sender
@@ -35,14 +37,11 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"MySegue"]) {
-        
+    if ([[segue identifier] isEqualToString:@"MySegue"]) {        
         // Get destination view
-        //SecondView *vc = [segue destinationViewController];
-        
+        //SecondView *vc = [segue destinationViewController];        
         // Get button tag
-        //NSInteger tagIndex = [(UIButton *)sender tag];
-        
+        //NSInteger tagIndex = [(UIButton *)sender tag];        
         // Set the selected button in the new view
         //[vc setSelectedButton:tagIndex];
     }

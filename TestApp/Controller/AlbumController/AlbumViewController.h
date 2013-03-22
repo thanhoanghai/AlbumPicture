@@ -21,12 +21,10 @@
     NSUInteger reloads_;
     
     ///picker
-    NSMutableArray *arrayListPicker;
+    NSMutableArray *arrayListCategoriesPicker;
     NSInteger indexPicker;
     
-    //hub loading
-    MBProgressHUD *HUD;
-    
+        
     NSMutableArray *listAlbumObject;
 
 }
@@ -37,9 +35,6 @@
 
 - (IBAction)touchUpInsideButtonDonePicker:(id)sender;
 - (void)showTypeAlbum:(BOOL) abc;
-//hub loading
-- (void)showHUDWithString;
-- (void)hideHUD;
 
 
 @end

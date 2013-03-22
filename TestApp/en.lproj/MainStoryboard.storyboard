@@ -120,7 +120,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" id="MqA-vM-U3b">
                                 <rect key="frame" x="0.0" y="50" width="320" height="366"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="-1" maxY="0.0"/>
                                 <connections>
                                     <outlet property="dataSource" destination="SRQ-SC-HYT" id="dK1-Qd-reX"/>
@@ -310,6 +310,42 @@
         <image name="icon_right_hover.png" width="50" height="50"/>
         <image name="splash.png" width="480" height="800"/>
     </resources>
+    <classes>
+        <class className="AlbumViewController" superclassName="BaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AlbumViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="touchUpInsideButtonDonePicker:"/>
+                <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="tabbleViewAlbum" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="viewContentPicker" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="BaseViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BaseViewController.h"/>
+        </class>
+        <class className="DetailAlbumController" superclassName="BaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailAlbumController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="UIviewMain" candidateClass="UIView"/>
+                <relationship kind="outlet" name="tabbleViewAlbum" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ViewController" superclassName="BaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="buttonPressed:"/>
+                <relationship kind="outlet" name="uiImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="ViewFullImageController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewFullImageController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="imageViewAds" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

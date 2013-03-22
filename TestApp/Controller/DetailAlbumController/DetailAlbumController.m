@@ -6,6 +6,9 @@
 #import "DetailAlbumController.h"
 #import "STSegmentedControl.h"
 #import "DetailAlbumCell.h"
+#import "EncodeMd5.h"
+#import "LRURLs.h"
+#import "ItemImageObject.h"
 
 
 
@@ -34,9 +37,15 @@
     originalImages = [[NSMutableArray alloc]init];
     [originalImages addObject:@"http://t2.gstatic.com/images?q=tbn:ANd9GcRerek_2gJSHlHyjuWu2ZFmpW1_-oEonQHsb4qr4invwdDgaHKH"];
     [originalImages addObject:@"http://t3.gstatic.com/images?q=tbn:ANd9GcQfDS4SlFz7_Bh1jOlbPTVl1DYUcr8Ip8VnfabG7vdq2Nky66aT"];
-    [originalImages addObject:@"http://t1.gstatic.com/images?q=tbn:ANd9GcTgrfC46A21Lq8Vvum6_axC0tZ9V7wAWAj4O05X2vn-QaSBF2DMPw"];
-        [originalImages addObject:@"http://t1.gstatic.com/images?q=tbn:ANd9GcRFTj__7zCPbkNdIGUDIy9D9674KW2mntISnaaKxGyOEoAGvqVL"];
     
+    //GET DATA ALBUM OBJECT FROM SERVER
+    listItemImage = [[NSMutableArray alloc] init ];
+    [self showHUDWithString];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self getDataPictureFromServer];
+        [self hideHUD];
+    });
+
     
     //SET TITLE FOR DETAIL ALBUM
     [self setTitle:@"SEXY GIRL"];
@@ -68,6 +77,37 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+#pragma mark getDataFromServer-Json
+
+-(void)getDataPictureFromServer
+{
+    NSString *speedLabel = [[NSString alloc] initWithFormat:@"galleriesget_pics1@i@s"];
+    NSString *linkPicture = [EncodeMd5 getLinkRequestPicture:@"88" withPage:1 withKey:speedLabel];
+    //NSString *hashedString = [EncodeMd5 getLinkKeyEndcode:LINK_REQUEST_PICTURE withKey:speedLabel];
+    NSLog(@"%@", linkPicture);
+    
+    NSData *jsonData = [NSData dataWithContentsOfURL:[NSURL URLWithString:linkPicture]];
+    if(jsonData)
+    {
+        NSError *error = nil;
+        id jsonObjects = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            NSLog(@"error is %@", [error localizedDescription]);
+            return;
+        }
+        NSDictionary *keys = [jsonObjects objectForKey:@"Pictures"];
+        // values in foreach loop
+        if([keys count] > 0 )
+            for (NSDictionary *key in keys) {
+                [listItemImage addObject: [ItemImageObject itemWithDictionary:key ]];
+            }
+        lengthListItemImage = [listItemImage count];
+        [tabbleViewAlbum reloadData];
+        [pullToRefreshManager_ relocatePullToRefreshView];
+    }else
+        NSLog(@"no data json");
+}
+
 
 #pragma mark Gallery
 -(void)gotoGallery
@@ -153,35 +193,47 @@
     if(cell==nil){
         cell = [[DetailAlbumCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"DetailCell"];
     }
-        
-    [cell setlinkImageViewLeft:[originalImages objectAtIndex:(indexPath.row%4)]
-     size:CGSizeMake(IMAGE_W, IMAGE_H)];
-    [cell setlinkImageViewRight:[originalImages objectAtIndex:((indexPath.row+2)%4)]
-                          size:CGSizeMake(IMAGE_W   , IMAGE_H)];
+    ItemImageObject *item;
     
-    cell.iconImageView.tag = indexPath.row*2;
-    cell.iconImageView2.tag = indexPath.row*2 + 1;
-    
-    //ADD GESTURE FOR IMAGE IN CELL
-    cell.iconImageView.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]
-                                             initWithTarget:self action:@selector(ClickEventOnImage:)];
-    [tapRecognizer setNumberOfTouchesRequired:1];
-    [tapRecognizer setDelegate:self];
-    [cell.iconImageView addGestureRecognizer:tapRecognizer];
-    
-    cell.iconImageView2.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tapRecognizer2 = [[UITapGestureRecognizer alloc]
-                                             initWithTarget:self action:@selector(ClickEventOnImage:)];
-    [tapRecognizer2 setNumberOfTouchesRequired:1];
-    [tapRecognizer2 setDelegate:self];
-    [cell.iconImageView2 addGestureRecognizer:tapRecognizer2];
+//SET DATA IMAGEVIEW LEFT
+    if( indexPath.row*2 < lengthListItemImage)
+    {        
+        item = [listItemImage objectAtIndex:indexPath.row];
+        [cell setlinkImageViewLeft:item.thumb
+                              size:CGSizeMake(IMAGE_W, IMAGE_H)];
+        cell.iconImageView.tag = indexPath.row*2;
+        //ADD GESTURE FOR IMAGE IN CELL
+        cell.iconImageView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]
+                                                 initWithTarget:self action:@selector(ClickEventOnImage:)];
+        [tapRecognizer setNumberOfTouchesRequired:1];
+        [tapRecognizer setDelegate:self];
+        [cell.iconImageView addGestureRecognizer:tapRecognizer];
+        [self setShadowForImage:cell.iconImageView];
 
-
+    }
+    
 
     
-    [self setShadowForImage:cell.iconImageView];
-    [self setShadowForImage:cell.iconImageView2];
+//SET DATA IMAGEVIEW RIGHT
+    if( (indexPath.row*2 + 1) < lengthListItemImage)
+    {
+        cell.iconImageView2.hidden = NO;
+        item = [listItemImage objectAtIndex:(indexPath.row*2+1)];
+        [cell setlinkImageViewRight:item.thumb
+                               size:CGSizeMake(IMAGE_W   , IMAGE_H)];
+        cell.iconImageView2.tag = indexPath.row*2 + 1;
+        //ADD GESTURE FOR IMAGE IN CELL
+        cell.iconImageView2.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tapRecognizer2 = [[UITapGestureRecognizer alloc]
+                                                  initWithTarget:self action:@selector(ClickEventOnImage:)];
+        [tapRecognizer2 setNumberOfTouchesRequired:1];
+        [tapRecognizer2 setDelegate:self];
+        [cell.iconImageView2 addGestureRecognizer:tapRecognizer2];
+        [self setShadowForImage:cell.iconImageView2];
+
+    }else
+        cell.iconImageView2.hidden = YES;
     
     return cell;
 }
@@ -203,7 +255,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5 + (5 * reloads_);
+    return (lengthListItemImage/2 + lengthListItemImage%2);
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -211,10 +263,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
-    //[self gotoGallery];
         
+    //[self gotoGallery];        
 }
 
 #pragma mark -

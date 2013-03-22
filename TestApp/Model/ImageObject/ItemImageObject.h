@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-#define JSONAlbum_gallery_id @"gallery_id"
-#define JSONAlbum_name @"name"
-#define JSONAlbum_source @"source"
-#define JSONAlbum_thumb @"thumb"
+#define JSONPicture_gallery_id @"gallery_id"
+#define JSONPicture_name @"name"
+#define JSONPicture_source @"source"
+#define JSONPicture_thumb @"thumb"
 
-@interface AlbumObject : NSObject
+@interface ItemImageObject : NSObject
 {
 }
 

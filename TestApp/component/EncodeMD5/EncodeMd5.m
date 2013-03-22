@@ -8,6 +8,7 @@
 
 #import "EncodeMd5.h"
 #import <CommonCrypto/CommonDigest.h>
+#import "LRURLs.h"
 
 @implementation EncodeMd5
 
@@ -73,6 +74,13 @@
     NSString *keyEncode = [self encodeMD5base64:key];
     NSString *linkMd5 = [NSString stringWithFormat:@"%@%@",link,keyEncode];
     return linkMd5;
+}
++(NSString*) getLinkRequestPicture:(NSString*)id_gallery withPage:(int)page withKey:(NSString *)key
+{
+    NSString *keyEncode = [self encodeMD5base64:key];
+    NSString *link = [NSString stringWithFormat:@"%@%@%@%d%@%@",LINK_REQUEST_PICTURE,
+                         id_gallery,LINK_PARAM_PAGE,page,LINK_PARAM_DEVIE_KEY,keyEncode];
+    return link;
 }
 
 @end

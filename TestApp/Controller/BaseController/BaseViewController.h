@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
 
 @interface BaseViewController : UIViewController
 {
@@ -16,8 +17,9 @@
     
     UIBarButtonItem *bntLeft1;
     
-    
-    
+    //hub loading
+    MBProgressHUD *HUD;
+
 }
 -(void)addBntLeftIconApp;
 -(void) actionIconApp:(id)sender;
@@ -27,4 +29,7 @@
 -(void) actionIconRefress:(id)sender;
 -(void) actionIconAccount:(id)sender;
 
+
+- (void)showHUDWithString;
+- (void)hideHUD;
 @end

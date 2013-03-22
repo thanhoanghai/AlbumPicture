@@ -14,5 +14,5 @@
 + (NSString *)base64String:(NSString *)str;
 +(NSString *) encodeMD5base64:(NSString *) str;
 +(NSString *) getLinkKeyEndcode:(NSString *)link withKey:(NSString *)key ;
-
++(NSString*) getLinkRequestPicture:(NSString*)id_gallery withPage:(int)page withKey:(NSString *)key;
 @end
