@@ -17,7 +17,7 @@
 #define LINK_PARAM_PAGE @"&page="
 #define LINK_PARAM_DEVIE_KEY @"&device=ios&pKey="
 
-#define LINK_REQUEST_ALBUM @"http://hinh.info/assets/services/?control=galleries&service=get_galleries&cat=1&page=1&device=ios&pKey="
+#define LINK_REQUEST_ALBUM @"http://hinh.info/assets/services/?control=galleries&service=get_galleries&cat="
 
 #define LINK_REQUEST_CATEGORIES @"http://hinh.info/assets/services/?control=galleries&service=get_categories&device=ios&page=1&pKey="
 

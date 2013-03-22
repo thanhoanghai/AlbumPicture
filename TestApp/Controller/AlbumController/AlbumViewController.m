@@ -111,11 +111,11 @@
 
 -(void)getDataAlbumFromServer
 {
-    NSString *speedLabel = [[NSString alloc] initWithFormat:@"galleriesget_galleries1@i@s"];
-    NSString *hashedString = [EncodeMd5 getLinkKeyEndcode:LINK_REQUEST_ALBUM withKey:speedLabel];
-    NSLog(@"%@", hashedString);
+    NSString *speedLabel = [[NSString alloc] initWithFormat:@"galleriesget_galleries1@i@s"];    
+    NSString *linkPicture = [EncodeMd5 getLinkRequestAlbum:@"1" withPage:1 withKey:speedLabel];
+    NSLog(@"%@", linkPicture);
     
-    NSData *jsonData = [NSData dataWithContentsOfURL:[NSURL URLWithString:hashedString]];
+    NSData *jsonData = [NSData dataWithContentsOfURL:[NSURL URLWithString:linkPicture]];
     if(jsonData)
     {
         NSError *error = nil;
