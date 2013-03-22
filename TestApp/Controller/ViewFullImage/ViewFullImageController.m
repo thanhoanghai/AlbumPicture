@@ -10,6 +10,9 @@
 #import "UIImageView+AFNetworking.h"
 #import "ItemImageObject.h"
 
+#define IMAGE_W 320
+#define IMAGE_H 302
+
 @interface ViewFullImageController ()
 
 @end
@@ -89,6 +92,7 @@
 -(void)setLinkImageAtIndex:(int)index
 {
     ItemImageObject *item = [listItemImageFull objectAtIndex:index];
-    [self.imageView setImageWithURL:[[NSURL alloc] initWithString: item.source]  placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
+    [self.imageView setImageWithURL:[[NSURL alloc] initWithString: item.source]  withSize:CGSizeMake(IMAGE_W, IMAGE_H) placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
+    
 }
 @end
