@@ -77,6 +77,8 @@
 		F364F7C316FBF8E600FE1212 /* ItemImageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F364F7C116FBF8E600FE1212 /* ItemImageObject.m */; };
 		F364F7C616FBF91600FE1212 /* ItemAlbumObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F364F7C516FBF91600FE1212 /* ItemAlbumObject.m */; };
 		F364F7CE16FBFF8500FE1212 /* ItemCategoriesObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F364F7CD16FBFF8500FE1212 /* ItemCategoriesObject.m */; };
+		F388EC3116FD87F9005A488A /* SMSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F388EC3016FD87F9005A488A /* SMSViewController.m */; };
+		F388EC3516FD9362005A488A /* ItemSMSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F388EC3416FD9362005A488A /* ItemSMSObject.m */; };
 		F43DA6541454565300F31F0B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43DA6531454565300F31F0B /* UIKit.framework */; };
 		F43DA6561454565300F31F0B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43DA6551454565300F31F0B /* Foundation.framework */; };
 		F43DA6581454565300F31F0B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43DA6571454565300F31F0B /* CoreGraphics.framework */; };
@@ -193,6 +195,10 @@
 		F364F7C516FBF91600FE1212 /* ItemAlbumObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemAlbumObject.m; sourceTree = "<group>"; };
 		F364F7CC16FBFF8500FE1212 /* ItemCategoriesObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCategoriesObject.h; sourceTree = "<group>"; };
 		F364F7CD16FBFF8500FE1212 /* ItemCategoriesObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCategoriesObject.m; sourceTree = "<group>"; };
+		F388EC2F16FD87F9005A488A /* SMSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSViewController.h; sourceTree = "<group>"; };
+		F388EC3016FD87F9005A488A /* SMSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSViewController.m; sourceTree = "<group>"; };
+		F388EC3316FD9362005A488A /* ItemSMSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemSMSObject.h; sourceTree = "<group>"; };
+		F388EC3416FD9362005A488A /* ItemSMSObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemSMSObject.m; sourceTree = "<group>"; };
 		F43DA64F1454565300F31F0B /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F43DA6531454565300F31F0B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F43DA6551454565300F31F0B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -271,6 +277,7 @@
 		EBB7EE6C16F58A4400FACC3E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F388EC2D16FD874F005A488A /* SMSViewController */,
 				EB0E20F616FA0A8C00E1925E /* ViewFullImage */,
 				EB4E85D316F8C49800960939 /* BaseController */,
 				EBB7EE6D16F58A4400FACC3E /* AlbumController */,
@@ -450,6 +457,7 @@
 		EBDE73E216FB666200A5EBC2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F388EC3216FD932F005A488A /* ItemSMSObject */,
 				F364F7CB16FBFF7600FE1212 /* CategoriesObject */,
 				F364F7BD16FBF7EE00FE1212 /* ImageObject */,
 				EBDE73EC16FB697900A5EBC2 /* Album */,
@@ -504,6 +512,24 @@
 				F364F7CD16FBFF8500FE1212 /* ItemCategoriesObject.m */,
 			);
 			path = CategoriesObject;
+			sourceTree = "<group>";
+		};
+		F388EC2D16FD874F005A488A /* SMSViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F388EC2F16FD87F9005A488A /* SMSViewController.h */,
+				F388EC3016FD87F9005A488A /* SMSViewController.m */,
+			);
+			path = SMSViewController;
+			sourceTree = "<group>";
+		};
+		F388EC3216FD932F005A488A /* ItemSMSObject */ = {
+			isa = PBXGroup;
+			children = (
+				F388EC3316FD9362005A488A /* ItemSMSObject.h */,
+				F388EC3416FD9362005A488A /* ItemSMSObject.m */,
+			);
+			path = ItemSMSObject;
 			sourceTree = "<group>";
 		};
 		F43DA6441454565300F31F0B = {
@@ -695,6 +721,8 @@
 				F364F7C316FBF8E600FE1212 /* ItemImageObject.m in Sources */,
 				F364F7C616FBF91600FE1212 /* ItemAlbumObject.m in Sources */,
 				F364F7CE16FBFF8500FE1212 /* ItemCategoriesObject.m in Sources */,
+				F388EC3116FD87F9005A488A /* SMSViewController.m in Sources */,
+				F388EC3516FD9362005A488A /* ItemSMSObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
