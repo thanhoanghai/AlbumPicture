@@ -19,7 +19,6 @@
 
 #define IMAGE_W 130
 #define IMAGE_H 170
-#define IMAGE_SIZE (79.0 * [UIScreen mainScreen].scale)
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 

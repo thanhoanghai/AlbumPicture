@@ -174,6 +174,10 @@
 {
     
 }
+-(void) actionIconAccount:(id)sender
+{
+    [self performSegueWithIdentifier:@"SMSViewController" sender:sender];
+}
 
 #pragma mark PickerView
 #pragma mark - Picker
@@ -208,12 +212,17 @@
 
 #pragma mark Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"showAlbumDetail"]) {
+    if ([segue.identifier isEqualToString:@"showAlbumDetail"])
+    {
         NSIndexPath *indexPath = [self.tabbleViewAlbum indexPathForSelectedRow];
         DetailAlbumController *destViewController = segue.destinationViewController;
         ItemAlbumObject* item = [listAlbumObject objectAtIndex:indexPath.row];
         destViewController.galleryId = item.id_;
-    }
+    }else
+    if ([segue.identifier isEqualToString:@"SMSViewController"])
+        {
+            
+        }
 }
 
 #pragma mark -
