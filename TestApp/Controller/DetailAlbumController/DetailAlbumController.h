@@ -22,6 +22,7 @@
     NSMutableArray              *originalImages;
     NSMutableArray              *listItemImage;
 
+    int indexClickImage;
     int lengthListItemImage;
     
 

@@ -137,7 +137,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"pushToViewFullImage"]) {        
         ViewFullImageController *destViewController = segue.destinationViewController;
-        destViewController.listItemImageFull = [[NSMutableArray alloc]initWithArray:listItemImage];;
+        destViewController.listItemImageFull = [[NSMutableArray alloc]initWithArray:listItemImage];
+        destViewController.indexImage = indexClickImage;
     }
 }
 
@@ -244,9 +245,9 @@
         if (!tapView.image) {
             return;
         }else
-        {
-            //int tag= tapView.tag;
+        {           
             NSLog(@"Tag=: %d",tapView.tag);
+            indexClickImage = tapView.tag;
             [self performSegueWithIdentifier:@"pushToViewFullImage" sender:self];
         }
     }
