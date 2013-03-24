@@ -57,6 +57,7 @@
     
     
     //GET DATA ALBUM OBJECT FROM SERVER
+    indexPage = 1;
     listAlbumObject = [[NSMutableArray alloc] init ];
     [self showHUDWithString];
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -86,7 +87,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
-    [self loadTable];
+    //[self loadTable];
 }
 
 
@@ -111,8 +112,8 @@
 
 -(void)getDataAlbumFromServer
 {
-    NSString *speedLabel = [[NSString alloc] initWithFormat:@"galleriesget_galleries1@i@s"];    
-    NSString *linkPicture = [EncodeMd5 getLinkRequestAlbum:@"1" withPage:1 withKey:speedLabel];
+    NSString *speedLabel = [[NSString alloc] initWithFormat:@"galleriesget_galleries%d@i@s",indexPage];
+    NSString *linkPicture = [EncodeMd5 getLinkRequestAlbum:1 withPage:indexPage withKey:speedLabel];
     NSLog(@"%@", linkPicture);
     
     NSData *jsonData = [NSData dataWithContentsOfURL:[NSURL URLWithString:linkPicture]];
@@ -124,6 +125,11 @@
             NSLog(@"error is %@", [error localizedDescription]);
             return;
         }
+        if([jsonObjects objectForKey:@"msg"])
+        {
+            indexPage = -1;
+            return ;
+        }
         NSDictionary *keys = [jsonObjects objectForKey:@"Galerries"];
         // values in foreach loop
         if([keys count] > 0 )
@@ -133,7 +139,7 @@
         [tabbleViewAlbum reloadData];
         [pullToRefreshManager_ relocatePullToRefreshView];
     }
-
+    return ;
 }
 
 -(void)getDataCategoriesFromServer
@@ -233,10 +239,11 @@
  */
 - (void)loadTable {
     
-    reloads_++;
-    
-    [tabbleViewAlbum reloadData];
-    
+    if(indexPage > 0)
+    {
+        indexPage=indexPage + 1;
+        [self getDataAlbumFromServer];
+    }
     [pullToRefreshManager_ tableViewReloadFinished];
 }
 
@@ -312,6 +319,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [pullToRefreshManager_ tableViewScrolled];
+
 }
 
 /**
@@ -325,6 +333,7 @@
  */
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     [pullToRefreshManager_ tableViewReleased];
+    NSLog(@"end dragg");
 }
 
 /**
@@ -336,6 +345,7 @@
 - (void)bottomPullToRefreshTriggered:(MNMBottomPullToRefreshManager *)manager {
     
     [self performSelector:@selector(loadTable) withObject:nil afterDelay:1.0f];
+    NSLog(@"refress");
 }
 
 

@@ -40,6 +40,7 @@
     [originalImages addObject:@"http://t3.gstatic.com/images?q=tbn:ANd9GcQfDS4SlFz7_Bh1jOlbPTVl1DYUcr8Ip8VnfabG7vdq2Nky66aT"];
     
     //GET DATA ALBUM OBJECT FROM SERVER
+    indexPage = 1;
     listItemImage = [[NSMutableArray alloc] init ];
     [self showHUDWithString];
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -82,8 +83,8 @@
 
 -(void)getDataPictureFromServer
 {
-    NSString *speedLabel = [[NSString alloc] initWithFormat:@"galleriesget_pics1@i@s"];
-    NSString *linkPicture = [EncodeMd5 getLinkRequestPicture:galleryId withPage:1 withKey:speedLabel];
+    NSString *speedLabel = [[NSString alloc] initWithFormat:@"galleriesget_pics%d@i@s",indexPage];
+    NSString *linkPicture = [EncodeMd5 getLinkRequestPicture:galleryId withPage:indexPage withKey:speedLabel];
     NSLog(@"%@", linkPicture);
     
     NSData *jsonData = [NSData dataWithContentsOfURL:[NSURL URLWithString:linkPicture]];
@@ -95,6 +96,12 @@
             NSLog(@"error is %@", [error localizedDescription]);
             return;
         }
+        if([jsonObjects objectForKey:@"msg"])
+        {
+            indexPage = -1;
+            return ;
+        }
+
         NSDictionary *keys = [jsonObjects objectForKey:@"Pictures"];
         // values in foreach loop
         if([keys count] > 0 )
@@ -150,17 +157,17 @@
  */
 - (void)loadTable {
     
-    reloads_++;
-    
-    [tabbleViewAlbum reloadData];
-    
+    if(indexPage > 0)
+    {
+        indexPage = indexPage + 1;
+        [self getDataPictureFromServer];
+    }
     [pullToRefreshManager_ tableViewReloadFinished];
 }
 
 - (void)viewDidLayoutSubviews {
     
     [super viewDidLayoutSubviews];
-    
     [pullToRefreshManager_ relocatePullToRefreshView];
 }
 

@@ -24,8 +24,8 @@
 
     int indexClickImage;
     int lengthListItemImage;
+    int indexPage;
     
-
 }
 
 

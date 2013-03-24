@@ -82,10 +82,10 @@
                          id_gallery,LINK_PARAM_PAGE,page,LINK_PARAM_DEVIE_KEY,keyEncode];
     return link;
 }
-+(NSString*) getLinkRequestAlbum:(NSString*)cat_id withPage:(int)page withKey:(NSString *)key
++(NSString*) getLinkRequestAlbum:(int)cat_id withPage:(int)page withKey:(NSString *)key
 {
     NSString *keyEncode = [self encodeMD5base64:key];
-    NSString *link = [NSString stringWithFormat:@"%@%@%@%d%@%@",LINK_REQUEST_ALBUM,
+    NSString *link = [NSString stringWithFormat:@"%@%d%@%d%@%@",LINK_REQUEST_ALBUM,
                       cat_id,LINK_PARAM_PAGE,page,LINK_PARAM_DEVIE_KEY,keyEncode];
     return link;
 }

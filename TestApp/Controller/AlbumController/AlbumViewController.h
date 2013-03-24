@@ -26,6 +26,7 @@
     
         
     NSMutableArray *listAlbumObject;
+    int indexPage;
 
 }
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
