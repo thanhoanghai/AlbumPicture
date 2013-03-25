@@ -23,7 +23,7 @@
 @synthesize pickerView;
 @synthesize viewContentPicker;
 
-#define IMAGE_W 106
+#define IMAGE_W 135
 #define IMAGE_H 85
 #define IMAGE_SIZE (79.0 * [UIScreen mainScreen].scale)
 
@@ -66,6 +66,7 @@
         [self hideHUD];
     });
     
+    self.navigationController.navigationBar.hidden=NO;
     //ADD CUSTOM TOP RIGHT BUTTON
     [self addbntRigtCustom:3];
     bntRight3.enabled = false;
@@ -333,7 +334,6 @@
  */
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     [pullToRefreshManager_ tableViewReleased];
-    NSLog(@"end dragg");
 }
 
 /**
@@ -345,7 +345,6 @@
 - (void)bottomPullToRefreshTriggered:(MNMBottomPullToRefreshManager *)manager {
     
     [self performSelector:@selector(loadTable) withObject:nil afterDelay:1.0f];
-    NSLog(@"refress");
 }
 
 

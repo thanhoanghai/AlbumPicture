@@ -109,17 +109,17 @@
     }
     if(numbnt >= 2)
     {
-        // create a standard “refresh” button
-        bntRight2 = [[UIBarButtonItem alloc]
-                     initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(actionIconRefress:)];
-        bntRight2.style = UIBarButtonItemStyleBordered;
-        [buttons addObject:bntRight2];
-        
-        
-        // create a spacer
-        bi = [[UIBarButtonItem alloc]
-              initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-        [buttons addObject:bi];
+//        // create a standard “refresh” button
+//        bntRight2 = [[UIBarButtonItem alloc]
+//                     initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(actionIconRefress:)];
+//        bntRight2.style = UIBarButtonItemStyleBordered;
+//        [buttons addObject:bntRight2];
+//        
+//        
+//        // create a spacer
+//        bi = [[UIBarButtonItem alloc]
+//              initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+//        [buttons addObject:bi];
 
     }
     if(numbnt >=1 )

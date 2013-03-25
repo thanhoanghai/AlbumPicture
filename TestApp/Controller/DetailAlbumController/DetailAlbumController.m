@@ -253,7 +253,6 @@
             return;
         }else
         {           
-            NSLog(@"Tag=: %d",tapView.tag);
             indexClickImage = tapView.tag;
             [self performSegueWithIdentifier:@"pushToViewFullImage" sender:self];
         }

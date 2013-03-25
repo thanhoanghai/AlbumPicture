@@ -15,6 +15,7 @@
     //[self createNavigationBarButton];
     [self addbntRigtCustom:1];
     [self addBntLeftIconApp];
+    self.navigationController.navigationBar.hidden=YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

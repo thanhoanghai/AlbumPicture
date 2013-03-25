@@ -12,7 +12,7 @@
 #import "ItemImageObject.h"
 
 #define IMAGE_W 320
-#define IMAGE_H 302
+#define IMAGE_H 460
 
 @interface ViewFullImageController ()
 
@@ -21,9 +21,11 @@
 @implementation ViewFullImageController
 @synthesize scrollView;
 @synthesize imageView;
-@synthesize imageViewAds;
 @synthesize listItemImageFull;
 @synthesize indexImage;
+@synthesize viewArrow;
+@synthesize viewTopBar;
+@synthesize imageViewSmall;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,14 +40,31 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    totalImage = [listItemImageFull count];
     
     scrollView.maximumZoomScale = 10.0f;
     scrollView.minimumZoomScale = 1.0f;
     scrollView.delegate = self;
+    scrollView.userInteractionEnabled=YES;
     
-    [self setLinkImageAtIndex:indexImage];
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]
+                            initWithTarget:self action:@selector(ClickEventOnImage:)];
+    [tapRecognizer setNumberOfTapsRequired:2];
+    tapRecognizer.numberOfTouchesRequired  = 1;
+    [self.scrollView addGestureRecognizer:tapRecognizer];
     
-    [self.imageViewAds setImageWithURL:[[NSURL alloc] initWithString:@"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSDlITgoDxJuYLzINzBYfgSXI92YYyX3vTqbwQucI9LfALvGqon"]  placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
+    UITapGestureRecognizer *tapRecognizer1 = [[UITapGestureRecognizer alloc]
+                            initWithTarget:self action:@selector(ClickEventOnImage:)];
+    [tapRecognizer1 setNumberOfTapsRequired:2];
+    tapRecognizer1.numberOfTouchesRequired  = 1;
+    [self.imageViewSmall addGestureRecognizer:tapRecognizer1];
+
+
+    [self setLinkImageTwoViewAtIndex:indexImage];
+    self.imageView.userInteractionEnabled=NO;
+    self.imageViewSmall.userInteractionEnabled=YES;
+    
+    showFull = false;
     self.navigationController.navigationBar.hidden = YES;
 
 }
@@ -64,33 +83,74 @@
 - (void)viewDidUnload {
     [self setScrollView:nil];
     [self setImageView:nil];
-    [self setImageViewAds:nil];
+    [self setViewArrow:nil];
+    [self setViewTopBar:nil];
+    [self setImageViewSmall:nil];
     [super viewDidUnload];
 }
-- (IBAction)backToDetailAlbumView:(id)sender {
-    
-    [self.navigationController popViewControllerAnimated:YES];
+#pragma mark set_status_full_image
+
+-(void)delayShowImage
+{
+    indexImage = indexImage+ 1;
+    if(indexImage >= totalImage)
+    {
+        indexImage = [listItemImageFull count]-1;
+        return;
+    }
+    double delayInSeconds = 3.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){        
+            NSLog(@" slide = %d" , indexImage);
+            if(indexImage < [listItemImageFull count] && showFull)
+            {
+                [self setLinkImageTwoViewAtIndex:indexImage];
+                [self delayShowImage];                
+            }
+    });
 }
 
+-(void) ClickEventOnImage:(id) sender
+{
+    [self setFullStatusImage];
+}
+
+
+-(void)setFullStatusImage
+{
+    showFull = !showFull;
+    viewArrow.hidden = showFull;
+    viewTopBar.hidden = showFull;
+    if(showFull)
+      [self delayShowImage];
+}
+
+
+#pragma  mark ActionLoadImage
 - (IBAction)nextImage:(id)sender {
     indexImage = indexImage + 1;
-    if(indexImage < [listItemImageFull count])
-        [self setLinkImageAtIndex:indexImage];
+    if(indexImage < totalImage)
+        [self setLinkImageTwoViewAtIndex:indexImage];
     else
-        indexImage = [listItemImageFull count] - 1;
+        indexImage = totalImage- 1;
     
 }
 
 - (IBAction)backImage:(id)sender {
     indexImage = indexImage -1 ;
     if(indexImage >= 0)
-        [self setLinkImageAtIndex:indexImage];
+        [self setLinkImageTwoViewAtIndex:indexImage];
     else
         indexImage = 0;
 
 }
 
-- (IBAction)downloadAlbumImage:(id)sender {
+- (IBAction)backToDetailAlbum:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)downloadAlbumImage {
     
     NSString *guideName = @"abc.jpg";
     NSString *photourl = [self getLinkImageAtIndex:0];
@@ -118,10 +178,49 @@
     [operation start];
 }
 
--(void)setLinkImageAtIndex:(int)index
+-(void)setImageForView:(UIImageView*)img withIndex:(int)i withRect:(Boolean)hasRect
 {
-    ItemImageObject *item = [listItemImageFull objectAtIndex:index];
-    [self.imageView setImageWithURL:[[NSURL alloc] initWithString: item.source]  withSize:CGSizeMake(IMAGE_W, IMAGE_H) placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
+    ItemImageObject *item = [listItemImageFull objectAtIndex:i];
+    if(hasRect)
+    {
+        [img setImageWithURL:[[NSURL alloc] initWithString: item.source]
+                    withSize:    self.imageView.frame.size
+            placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
+    }
+    else
+    {
+        [img setImageWithURL:[[NSURL alloc] initWithString: item.source]                    
+            placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
+    }
+}
+
+-(void)setLinkImageTwoViewAtIndex:(int)index
+{
+    if(showFull)
+    {
+        [self setImageForView:self.imageView withIndex:index withRect:false];
+        if(index + 1 < totalImage)
+        {
+            [self setImageForView:self.imageViewSmall withIndex:(index+1) withRect:true];
+        }
+    }else
+    {
+        [self setImageForView:self.imageViewSmall withIndex:index withRect:true];
+        if(index + 1 < totalImage)
+        {
+            [self setImageForView:self.imageView withIndex:(index+1) withRect:false];
+        }
+
+    }
+}
+-(void)setTempImage
+{
+    if(indexImage+1 < totalImage)
+    {
+        ItemImageObject *item = [listItemImageFull objectAtIndex:(indexImage+1) ];
+        [imageviewTemp setImageWithURL:[[NSURL alloc] initWithString: item.source]
+                       placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
+    }
     
 }
 -(NSString*) getLinkImageAtIndex:(int)index

@@ -93,7 +93,7 @@ static char kAFImageRequestOperationObjectKey;
         loadingView =   [[UIActivityIndicatorView alloc] initWithFrame:self.bounds];
         loadingView.alpha = 1.0;
         loadingView.hidesWhenStopped = YES;
-        [loadingView setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
+        [loadingView setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhite];
         [loadingView setTag:INDICATOR_TAG];
         [self addSubview:loadingView];
     }
@@ -126,7 +126,7 @@ static char kAFImageRequestOperationObjectKey;
         loadingView =   [[UIActivityIndicatorView alloc] initWithFrame:self.bounds];
         loadingView.alpha = 1.0;
         loadingView.hidesWhenStopped = YES;
-        [loadingView setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
+        [loadingView setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhite];
         [loadingView setTag:INDICATOR_TAG];
         [self addSubview:loadingView];
     }
