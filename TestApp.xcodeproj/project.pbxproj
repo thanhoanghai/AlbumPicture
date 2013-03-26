@@ -77,6 +77,7 @@
 		F364F7C316FBF8E600FE1212 /* ItemImageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F364F7C116FBF8E600FE1212 /* ItemImageObject.m */; };
 		F364F7C616FBF91600FE1212 /* ItemAlbumObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F364F7C516FBF91600FE1212 /* ItemAlbumObject.m */; };
 		F364F7CE16FBFF8500FE1212 /* ItemCategoriesObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F364F7CD16FBFF8500FE1212 /* ItemCategoriesObject.m */; };
+		F370461A17019AAF00D2CECD /* icon_down.png in Resources */ = {isa = PBXBuildFile; fileRef = F370461917019AAF00D2CECD /* icon_down.png */; };
 		F388EC3116FD87F9005A488A /* SMSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F388EC3016FD87F9005A488A /* SMSViewController.m */; };
 		F388EC3516FD9362005A488A /* ItemSMSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F388EC3416FD9362005A488A /* ItemSMSObject.m */; };
 		F43DA6541454565300F31F0B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43DA6531454565300F31F0B /* UIKit.framework */; };
@@ -195,6 +196,7 @@
 		F364F7C516FBF91600FE1212 /* ItemAlbumObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemAlbumObject.m; sourceTree = "<group>"; };
 		F364F7CC16FBFF8500FE1212 /* ItemCategoriesObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCategoriesObject.h; sourceTree = "<group>"; };
 		F364F7CD16FBFF8500FE1212 /* ItemCategoriesObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCategoriesObject.m; sourceTree = "<group>"; };
+		F370461917019AAF00D2CECD /* icon_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_down.png; sourceTree = "<group>"; };
 		F388EC2F16FD87F9005A488A /* SMSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSViewController.h; sourceTree = "<group>"; };
 		F388EC3016FD87F9005A488A /* SMSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSViewController.m; sourceTree = "<group>"; };
 		F388EC3316FD9362005A488A /* ItemSMSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemSMSObject.h; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 		EBB7EED616F58B9F00FACC3E /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				F370461917019AAF00D2CECD /* icon_down.png */,
 				EB0E210B16FA20EE00E1925E /* icon_info.png */,
 				EB0E210716FA1FAE00E1925E /* icon_back_1.png */,
 				EB0E20FF16FA1C0C00E1925E /* icon_left_hover.png */,
@@ -675,6 +678,7 @@
 				EB0E210616FA1C0C00E1925E /* icon_right.png in Resources */,
 				EB0E210916FA1FAF00E1925E /* icon_back_1.png in Resources */,
 				EB0E210C16FA20EE00E1925E /* icon_info.png in Resources */,
+				F370461A17019AAF00D2CECD /* icon_down.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -807,10 +811,12 @@
 		F43DA66F1454565300F31F0B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Fluxco Interactive, Inc.";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TestApp/TestApp-Prefix.pch";
 				INFOPLIST_FILE = "TestApp/TestApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
