@@ -21,5 +21,7 @@
 
 #define LINK_REQUEST_SMS @"http://hinh.info/assets/services/?control=infos&service=get_smsinf&device=ios&page=1&pKey="
 
+#define LINK_REQUEST_ADS @"http://hinh.info/assets/services/?control=infos&service=get_ads&device=ios&page=1&pKey="
+
 #define LINK_PARAM_PAGE @"&page="
 #define LINK_PARAM_DEVIE_KEY @"&device=ios&pKey="

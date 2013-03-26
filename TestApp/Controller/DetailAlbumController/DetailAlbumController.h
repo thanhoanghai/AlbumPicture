@@ -10,7 +10,8 @@
 
 @class STSegmentedControl;
 
-@interface DetailAlbumController : BaseViewController <FGalleryViewControllerDelegate,MNMBottomPullToRefreshManagerClient,UIGestureRecognizerDelegate>
+@interface DetailAlbumController : BaseViewController <FGalleryViewControllerDelegate,MNMBottomPullToRefreshManagerClient,
+UIGestureRecognizerDelegate,UIWebViewDelegate>
 {
     
     //pull to refress manager
@@ -29,6 +30,7 @@
 }
 
 
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (strong, nonatomic) IBOutlet UITableView *tabbleViewAlbum;
 @property (strong, nonatomic) IBOutlet UIView *UIviewMain;
 @property (strong, nonatomic) NSString *galleryId;

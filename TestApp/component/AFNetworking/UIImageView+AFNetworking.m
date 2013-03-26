@@ -118,6 +118,40 @@ static char kAFImageRequestOperationObjectKey;
     [self setImageWithURL:url placeholderImage:nil];
 }
 
+- (void)setImageWithURLhasBlock:(NSURL *)url
+               placeholderImage:(UIImage *)placeholderImage
+                        success:(void (^)(Boolean ok))success
+                        failure:(void (^)(Boolean notOk))failure
+
+{
+    UIActivityIndicatorView *loadingView = (UIActivityIndicatorView*)[self viewWithTag:INDICATOR_TAG];
+    if(!loadingView){
+        loadingView =   [[UIActivityIndicatorView alloc] initWithFrame:self.bounds];
+        loadingView.alpha = 1.0;
+        loadingView.hidesWhenStopped = YES;
+        [loadingView setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhite];
+        [loadingView setTag:INDICATOR_TAG];
+        [self addSubview:loadingView];
+    }
+    
+    [loadingView startAnimating];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
+    [request setHTTPShouldHandleCookies:NO];
+    [request setHTTPShouldUsePipelining:YES];
+    
+    [self setImageWithURLRequest:request placeholderImage:placeholderImage success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
+        
+        [loadingView stopAnimating];
+        if(success)
+            success(true);
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
+        [loadingView stopAnimating];
+        if(failure)
+            failure(false);
+    }];
+}
+
+
 - (void)setImageWithURL:(NSURL *)url 
        placeholderImage:(UIImage *)placeholderImage
 {

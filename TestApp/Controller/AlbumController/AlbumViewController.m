@@ -22,6 +22,7 @@
 @synthesize tabbleViewAlbum;
 @synthesize pickerView;
 @synthesize viewContentPicker;
+@synthesize webView;
 
 #define IMAGE_W 135
 #define IMAGE_H 85
@@ -60,7 +61,9 @@
     indexPage = 1;
     listAlbumObject = [[NSMutableArray alloc] init ];
     [self showHUDWithString];
+    webView.delegate = self;
     dispatch_async(dispatch_get_main_queue(), ^{
+        [self getAdsFromServer:webView];
         [self getDataAlbumFromServer];
         [self getDataCategoriesFromServer];
         [self hideHUD];
@@ -98,6 +101,7 @@
     [self setTabbleViewAlbum:nil];
     [self setViewContentPicker:nil];
     [self setPickerView:nil];
+    [self setWebView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -169,7 +173,6 @@
     }
     
 }
-
 
 #pragma mark Action-TopButtonNavigation
 
@@ -257,11 +260,13 @@
 #pragma mark - UI
 -(void)setShadowForImage:(UIImageView*)img
 {
+    img.clipsToBounds = YES;
     img.layer.shadowColor = [UIColor blackColor].CGColor;
     img.layer.shadowOpacity = 1.0f;
     img.layer.shadowOffset = CGSizeMake(3.0f, 3.0f);
     img.layer.shadowRadius = 2.0f;
     img.layer.masksToBounds = NO;
+    img.layer.cornerRadius = 9.0;
     UIBezierPath *path = [UIBezierPath bezierPathWithRect:img.bounds];
     img.layer.shadowPath = path.CGPath;
    

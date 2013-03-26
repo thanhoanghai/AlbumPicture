@@ -26,6 +26,7 @@
 @synthesize viewArrow;
 @synthesize viewTopBar;
 @synthesize imageViewSmall;
+@synthesize webview;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -66,6 +67,9 @@
     
     showFull = false;
     self.navigationController.navigationBar.hidden = YES;
+    
+    webview.delegate = self;
+    [self getAdsFromServer:webview];
 
 }
 
@@ -86,27 +90,44 @@
     [self setViewArrow:nil];
     [self setViewTopBar:nil];
     [self setImageViewSmall:nil];
+    [self setWebview:nil];
     [super viewDidUnload];
 }
 #pragma mark set_status_full_image
 
 -(void)delayShowImage
 {
-    indexImage = indexImage+ 1;
-    if(indexImage >= totalImage)
-    {
-        indexImage = [listItemImageFull count]-1;
-        return;
-    }
+        
     double delayInSeconds = 3.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){        
-            NSLog(@" slide = %d" , indexImage);
-            if(indexImage < [listItemImageFull count] && showFull)
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            if(!showFull)
+                return;
+            indexImage = indexImage+ 1;
+            if(indexImage >= totalImage)
             {
-                [self setLinkImageTwoViewAtIndex:indexImage];
-                [self delayShowImage];                
+                indexImage = [listItemImageFull count]-1;
+                return;
             }
+            NSLog(@" slide = %d" , indexImage);
+//            if(indexImage < [listItemImageFull count] && showFull)
+//            {
+//                [self setLinkImageTwoViewAtIndex:indexImage];
+//                [self delayShowImage];                
+//            }
+         if(indexImage < [listItemImageFull count] && showFull)
+         {
+             ItemImageObject *item  = [listItemImageFull objectAtIndex:indexImage];
+             [self.imageView setImageWithURLhasBlock:[[NSURL alloc] initWithString: item.source]
+                                    placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]
+                                             success:^(Boolean ok)
+              {
+                  [self delayShowImage];
+              }
+            failure:^(Boolean notOK){} ];
+
+         }
+        
     });
 }
 
@@ -122,7 +143,12 @@
     viewArrow.hidden = showFull;
     viewTopBar.hidden = showFull;
     if(showFull)
-      [self delayShowImage];
+    {
+        [self setImageForView:self.imageView withIndex:indexImage withRect:false];
+        [self delayShowImage];
+    }else
+        [self setImageForView:self.imageViewSmall withIndex:indexImage withRect:true];
+        
 }
 
 
@@ -148,6 +174,10 @@
 - (IBAction)backToDetailAlbum:(id)sender {
     
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)touchDownloadImage:(id)sender {
+    [self downloadAlbumImage];
 }
 
 - (void)downloadAlbumImage {

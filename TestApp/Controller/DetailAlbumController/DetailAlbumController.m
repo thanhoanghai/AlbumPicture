@@ -16,6 +16,7 @@
 @implementation DetailAlbumController
 @synthesize tabbleViewAlbum;
 @synthesize galleryId;
+@synthesize webView;
 
 #define IMAGE_W 130
 #define IMAGE_H 170
@@ -43,7 +44,10 @@
     indexPage = 1;
     listItemImage = [[NSMutableArray alloc] init ];
     [self showHUDWithString];
+    
+    webView.delegate = self;
     dispatch_async(dispatch_get_main_queue(), ^{
+        [self getAdsFromServer:webView];
         [self getDataPictureFromServer];
         [self hideHUD];
     });
@@ -69,6 +73,7 @@
 {
     [self setUIviewMain:nil];
     [self setTabbleViewAlbum:nil];
+    [self setWebView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -114,6 +119,8 @@
     }else
         NSLog(@"no data json");
 }
+
+
 
 
 #pragma mark Gallery

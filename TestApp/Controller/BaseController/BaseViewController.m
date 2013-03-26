@@ -8,6 +8,8 @@
 
 #import "BaseViewController.h"
 #import "MBProgressHUD.h"
+#import "EncodeMd5.h"
+#import "LRURLs.h"
 
 @interface BaseViewController ()
 
@@ -198,6 +200,30 @@
     }
 }
 
+#pragma mark WebView
+-(void)getAdsFromServer:(UIWebView*)webview
+{
+    NSString *speedLabel = [[NSString alloc] initWithFormat:@"infosget_ads1@i@s"];
+    NSString *hashedString = [EncodeMd5 getLinkKeyEndcode:LINK_REQUEST_ADS withKey:speedLabel];
+    NSLog(@"%@", hashedString);
+    
+    NSData *jsonData = [NSData dataWithContentsOfURL:[NSURL URLWithString:hashedString]];
+    if(jsonData)
+    {
+        NSError *error = nil;
+        id jsonObjects = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+        if (error)
+        {
+            NSLog(@"error is %@", [error localizedDescription]);
+            return;
+        }
+        NSString *link = [jsonObjects objectForKey:@"ads"];
+        NSURL *url=  [NSURL URLWithString:link];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];        
+        [webview loadRequest:request];
+        
+    }
 
+}
 
 @end

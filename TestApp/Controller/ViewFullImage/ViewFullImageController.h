@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ViewFullImageController : UIViewController <UIScrollViewDelegate,UIGestureRecognizerDelegate>
+#import "BaseViewController.h"
+@interface ViewFullImageController : BaseViewController <UIScrollViewDelegate,UIGestureRecognizerDelegate,UIWebViewDelegate>
 {
     Boolean showFull;
     UIImageView *imageviewTemp;
     int totalImage;
 }
+@property (weak, nonatomic) IBOutlet UIWebView *webview;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewSmall;
@@ -27,6 +28,7 @@
 - (IBAction)nextImage:(id)sender;
 - (IBAction)backImage:(id)sender;
 - (IBAction)backToDetailAlbum:(id)sender;
+- (IBAction)touchDownloadImage:(id)sender;
 
 
 @end

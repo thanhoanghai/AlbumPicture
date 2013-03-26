@@ -53,6 +53,12 @@
 - (void)setImageWithURL:(NSURL *)url 
        placeholderImage:(UIImage *)placeholderImage;
 
+- (void)setImageWithURLhasBlock:(NSURL *)url
+               placeholderImage:(UIImage *)placeholderImage
+                        success:(void (^)(Boolean ok))success
+                        failure:(void (^)(Boolean notOk))failure ;
+
+
 /**
  Creates and enqueues an image request operation, which asynchronously downloads the image with the specified URL request object. Any previous image request for the receiver will be cancelled. If the image is cached locally, the image is set immediately, otherwise the specified placeholder image will be set immediately, and then the remote image will be set once the request is finished.
  

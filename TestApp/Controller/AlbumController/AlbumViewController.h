@@ -10,7 +10,7 @@
 
 @class STSegmentedControl;
 
-@interface AlbumViewController : BaseViewController <UIPickerViewDelegate, UIPickerViewDataSource,MNMBottomPullToRefreshManagerClient>
+@interface AlbumViewController : BaseViewController <UIPickerViewDelegate, UIPickerViewDataSource,MNMBottomPullToRefreshManagerClient,UIWebViewDelegate>
 {
     NSInteger selectedButton;
     STSegmentedControl *segment;
@@ -29,6 +29,7 @@
     int indexPage;
 
 }
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 @property (weak, nonatomic) IBOutlet UIView *viewContentPicker;
 @property (strong, nonatomic) IBOutlet UITableView *tabbleViewAlbum;

@@ -21,6 +21,7 @@
     MBProgressHUD *HUD;
 
 }
+-(void)getAdsFromServer:(UIWebView*)webview;
 -(void)addBntLeftIconApp;
 -(void) actionIconApp:(id)sender;
 

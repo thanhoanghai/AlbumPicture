@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="GgW-b3-f6o">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="GgW-b3-f6o">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -9,17 +9,18 @@
             <objects>
                 <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="splash.png" id="lQK-3I-Xl6">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="cZL-8b-cVK"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="uiImageView" destination="lQK-3I-Xl6" id="oAI-3t-Xj0"/>
                         <segue destination="cYU-3t-Lqw" kind="push" identifier="MySegue" id="kmO-Rg-LtS"/>
@@ -40,12 +41,17 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="Zwx-a2-Itr">
                                 <rect key="frame" x="0.0" y="80" width="320" height="336"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.35294118523597717" green="0.43529415130615234" blue="0.50980395078659058" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="cYU-3t-Lqw" id="lKa-Px-RYu"/>
                                     <outlet property="delegate" destination="cYU-3t-Lqw" id="tdG-yg-eWR"/>
                                 </connections>
                             </tableView>
+                            <webView contentMode="scaleToFill" id="Anb-bh-slg">
+                                <rect key="frame" x="0.0" y="30" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
                             <view contentMode="scaleToFill" id="gP9-Wa-FuF">
                                 <rect key="frame" x="0.0" y="149" width="320" height="267"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -76,39 +82,23 @@
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="gt4-eS-Cqo">
-                                <rect key="frame" x="0.0" y="30" width="320" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.83743433330178707" green="0.88718580163043481" blue="0.50887409038841447" alpha="1" colorSpace="calibratedRGB"/>
-                            </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Ad" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9Mc-ci-fy2">
-                                <rect key="frame" x="135" y="44" width="50" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Mnz-qO-oBJ">
-                        <barButtonItem key="rightBarButtonItem" title="Type" id="w2d-eZ-JPL">
-                            <connections>
-                                <action selector="showTypeAlbum:" destination="cYU-3t-Lqw" id="t0K-8S-1iD"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Mnz-qO-oBJ"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="pickerView" destination="TOn-RJ-MAt" id="Dd5-Qq-nHL"/>
                         <outlet property="tabbleViewAlbum" destination="Zwx-a2-Itr" id="VX5-c4-vXJ"/>
                         <outlet property="viewContentPicker" destination="gP9-Wa-FuF" id="tFv-Jm-N5h"/>
+                        <outlet property="webView" destination="Anb-bh-slg" id="ZEs-u6-hWt"/>
                         <segue destination="GnG-kV-NoS" kind="push" identifier="SMSViewController" id="AvG-5s-r1W"/>
                         <segue destination="SRQ-SC-HYT" kind="push" identifier="showAlbumDetail" id="kvR-ny-mIA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8CI-k1-AKy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="207" y="88"/>
+            <point key="canvasLocation" x="260" y="82"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ZkH-W7-4fg">
@@ -171,31 +161,25 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" id="MqA-vM-U3b">
                                 <rect key="frame" x="0.0" y="50" width="320" height="366"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.3490196168422699" green="0.43137258291244507" blue="0.5058823823928833" alpha="1" colorSpace="deviceRGB"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="-1" maxY="0.0"/>
                                 <connections>
                                     <outlet property="dataSource" destination="SRQ-SC-HYT" id="dK1-Qd-reX"/>
                                     <outlet property="delegate" destination="SRQ-SC-HYT" id="cFa-NR-D1Q"/>
                                 </connections>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="CPS-dR-Hsa">
+                            <webView contentMode="scaleToFill" id="241-rl-xgk">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.9322742537481894" green="1" blue="0.64863581553684679" alpha="1" colorSpace="calibratedRGB"/>
-                            </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="AD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NjM-Bo-B05">
-                                <rect key="frame" x="139" y="14" width="37" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="tcm-JQ-YFy"/>
                     <connections>
                         <outlet property="tabbleViewAlbum" destination="MqA-vM-U3b" id="iYP-r0-K3a"/>
+                        <outlet property="webView" destination="241-rl-xgk" id="w7b-qO-tCB"/>
                         <segue destination="rga-ET-zmC" kind="push" identifier="pushToViewFullImage" id="dXK-sr-nmj"/>
                     </connections>
                 </viewController>
@@ -227,12 +211,12 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="JD7-Lx-SbH">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.50980395078659058" green="0.59215688705444336" blue="0.70588237047195435" alpha="1" colorSpace="deviceRGB"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="juO-uv-Zg0">
-                                        <rect key="frame" x="5" y="2" width="40" height="40"/>
+                                        <rect key="frame" x="7.5" y="2.5" width="35" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Button" image="icon_back_1.png">
@@ -246,15 +230,30 @@
                                             <action selector="backToDetailAlbum:" destination="rga-ET-zmC" eventType="touchUpInside" id="u8A-wG-wNe"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="6Qr-mg-QVG">
-                                        <rect key="frame" x="0.0" y="45" width="320" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.93227425370000006" green="1" blue="0.64863581550000005" alpha="1" colorSpace="calibratedRGB"/>
-                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="oRq-d4-CxD">
                                         <rect key="frame" x="0.0" y="85" width="320" height="375"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
+                                    <webView contentMode="scaleToFill" id="Lvm-bY-Imn">
+                                        <rect key="frame" x="0.0" y="40" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </webView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="CBl-wc-Xmg">
+                                        <rect key="frame" x="277" y="2" width="35" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Button" image="icon_down.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="touchDownloadImage:" destination="rga-ET-zmC" eventType="touchUpInside" id="tJd-bA-ydB"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -305,6 +304,7 @@
                         <outlet property="scrollView" destination="9tU-Gj-go5" id="AMe-CA-WuU"/>
                         <outlet property="viewArrow" destination="36i-k7-eIQ" id="S14-rf-R6k"/>
                         <outlet property="viewTopBar" destination="jfr-DP-BmF" id="gan-EC-ttd"/>
+                        <outlet property="webview" destination="Lvm-bY-Imn" id="Nf7-BE-MoK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N3y-p1-0wc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -332,60 +332,13 @@
     </scenes>
     <resources>
         <image name="icon_back_1.png" width="50" height="50"/>
+        <image name="icon_down.png" width="50" height="50"/>
         <image name="icon_left.png" width="50" height="50"/>
         <image name="icon_left_hover.png" width="50" height="50"/>
         <image name="icon_right.png" width="50" height="50"/>
         <image name="icon_right_hover.png" width="50" height="50"/>
         <image name="splash.png" width="480" height="800"/>
     </resources>
-    <classes>
-        <class className="AlbumViewController" superclassName="BaseViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AlbumViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="touchUpInsideButtonDonePicker:"/>
-                <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
-                <relationship kind="outlet" name="tabbleViewAlbum" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="viewContentPicker" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="BaseViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BaseViewController.h"/>
-        </class>
-        <class className="DetailAlbumController" superclassName="BaseViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailAlbumController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="UIviewMain" candidateClass="UIView"/>
-                <relationship kind="outlet" name="tabbleViewAlbum" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="SMSViewController" superclassName="BaseViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMSViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="labelContent" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="labelSendto" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ViewController" superclassName="BaseViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="buttonPressed:"/>
-                <relationship kind="outlet" name="uiImageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="ViewFullImageController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewFullImageController.h"/>
-            <relationships>
-                <relationship kind="action" name="backImage:"/>
-                <relationship kind="action" name="backToDetailAlbum:"/>
-                <relationship kind="action" name="nextImage:"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="imageViewSmall" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="viewArrow" candidateClass="UIView"/>
-                <relationship kind="outlet" name="viewTopBar" candidateClass="UIView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
